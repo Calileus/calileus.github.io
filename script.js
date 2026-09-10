@@ -1,130 +1,130 @@
 const configuration = {
-  githubUser: 'calileus',
-  organizations: ['CalileusLab', 'ObsidianHonorCoders'],
-  excludeForks: true,
-  includeYourAccount: true,
+    githubUser: 'calileus',
+    organizations: ['CalileusLab', 'ObsidianHonorCoders'],
+    excludeForks: true,
+    includeYourAccount: true,
 };
 
 const API_BASE = 'https://api.github.com';
 
 function isConfiguredOrg(orgName) {
-  return Boolean(orgName && orgName.trim() && !orgName.startsWith('YOUR_ORG_'));
+    return Boolean(orgName && orgName.trim() && !orgName.startsWith('YOUR_ORG_'));
 }
 
 function escapeHtml(value) {
-  return String(value ?? '')
-    .replace(/&/g, '&amp;')
-    .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;')
-    .replace(/"/g, '&quot;')
-    .replace(/'/g, '&#039;');
+    return String(value ?? '')
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#039;');
 }
 
 function formatUpdatedAt(value) {
-  if (!value) {
-    return 'Recently';
-  }
+    if (!value) {
+        return 'Recently';
+    }
 
-  const date = new Date(value);
-  return new Intl.DateTimeFormat('en', {
-    month: 'short',
-    day: 'numeric',
-    year: 'numeric',
-  }).format(date);
+    const date = new Date(value);
+    return new Intl.DateTimeFormat('en', {
+        month: 'short',
+        day: 'numeric',
+        year: 'numeric',
+    }).format(date);
 }
 
 async function fetchJson(url) {
-  const response = await fetch(url, {
-    headers: {
-      Accept: 'application/vnd.github+json',
-    },
-  });
+    const response = await fetch(url, {
+        headers: {
+            Accept: 'application/vnd.github+json',
+        },
+    });
 
-  if (!response.ok) {
-    throw new Error(`GitHub API request failed: ${response.status} ${response.statusText}`);
-  }
+    if (!response.ok) {
+        throw new Error(`GitHub API request failed: ${response.status} ${response.statusText}`);
+    }
 
-  return response.json();
+    return response.json();
 }
 
 async function loadRepositories() {
-  const sources = [];
+    const sources = [];
 
-  if (configuration.includeYourAccount) {
-    sources.push({
-      label: configuration.githubUser,
-      request: fetchJson(`${API_BASE}/users/${configuration.githubUser}/repos?sort=updated&per_page=100`),
-    });
-  }
-
-  for (const org of configuration.organizations) {
-    if (!isConfiguredOrg(org)) {
-      continue;
+    if (configuration.includeYourAccount) {
+        sources.push({
+            label: configuration.githubUser,
+            request: fetchJson(`${API_BASE}/users/${configuration.githubUser}/repos?sort=updated&per_page=100`),
+        });
     }
 
-    sources.push({
-      label: org,
-      request: fetchJson(`${API_BASE}/orgs/${org}/repos?sort=updated&per_page=100`),
-    });
-  }
+    for (const org of configuration.organizations) {
+        if (!isConfiguredOrg(org)) {
+            continue;
+        }
 
-  const results = await Promise.allSettled(
-    sources.map(async (source) => ({
-      source: source.label,
-      repos: await source.request,
-    }))
-  );
-
-  const repoMap = new Map();
-  const errors = [];
-
-  results.forEach((result) => {
-    if (result.status === 'rejected') {
-      errors.push(result.reason.message);
-      return;
+        sources.push({
+            label: org,
+            request: fetchJson(`${API_BASE}/orgs/${org}/repos?sort=updated&per_page=100`),
+        });
     }
 
-    const repos = Array.isArray(result.value.repos) ? result.value.repos : [];
+    const results = await Promise.allSettled(
+        sources.map(async (source) => ({
+            source: source.label,
+            repos: await source.request,
+        }))
+    );
 
-    repos.forEach((repo) => {
-      if (!repo || repo.private) {
-        return;
-      }
+    const repoMap = new Map();
+    const errors = [];
 
-      if (configuration.excludeForks && repo.fork) {
-        return;
-      }
+    results.forEach((result) => {
+        if (result.status === 'rejected') {
+            errors.push(result.reason.message);
+            return;
+        }
 
-      if (!repoMap.has(repo.id)) {
-        repoMap.set(repo.id, repo);
-      }
+        const repos = Array.isArray(result.value.repos) ? result.value.repos : [];
+
+        repos.forEach((repo) => {
+            if (!repo || repo.private) {
+                return;
+            }
+
+            if (configuration.excludeForks && repo.fork) {
+                return;
+            }
+
+            if (!repoMap.has(repo.id)) {
+                repoMap.set(repo.id, repo);
+            }
+        });
     });
-  });
 
-  const repos = [...repoMap.values()].sort((a, b) => {
-    return new Date(b.updated_at) - new Date(a.updated_at);
-  });
+    const repos = [...repoMap.values()].sort((a, b) => {
+        return new Date(b.updated_at) - new Date(a.updated_at);
+    });
 
-  renderStats(repos);
-  renderRepos(repos);
+    renderStats(repos);
+    renderRepos(repos);
 
-  if (errors.length > 0) {
-    console.warn('One or more GitHub sources could not be loaded:', errors);
-  }
+    if (errors.length > 0) {
+        console.warn('One or more GitHub sources could not be loaded:', errors);
+    }
 }
 
 function renderStats(repos) {
-  const statsContainer = document.getElementById('stats');
+    const statsContainer = document.getElementById('stats');
 
-  const languages = new Set(
-    repos
-      .map((repo) => repo.language)
-      .filter(Boolean)
-  );
+    const languages = new Set(
+        repos
+            .map((repo) => repo.language)
+            .filter(Boolean)
+    );
 
-  const newest = repos[0]?.updated_at ?? null;
+    const newest = repos[0]?.updated_at ?? null;
 
-  statsContainer.innerHTML = `
+    statsContainer.innerHTML = `
     <div class="stat-card">
       <span class="stat-label">Repositories</span>
       <strong>${repos.length}</strong>
@@ -141,23 +141,23 @@ function renderStats(repos) {
 }
 
 function renderRepos(repos) {
-  const grid = document.getElementById('repo-grid');
-  const meta = document.getElementById('repo-meta');
+    const grid = document.getElementById('repo-grid');
+    const meta = document.getElementById('repo-meta');
 
-  meta.textContent = `${repos.length} repositories across your configured GitHub sources`;
+    meta.textContent = `${repos.length} repositories across your configured GitHub sources`;
 
-  if (!repos.length) {
-    grid.innerHTML = `
+    if (!repos.length) {
+        grid.innerHTML = `
       <div class="empty-state">
         No public repositories were returned for the configured GitHub sources.
       </div>
     `;
-    return;
-  }
+        return;
+    }
 
-  grid.innerHTML = repos
-    .map(
-      (repo) => `
+    grid.innerHTML = repos
+        .map(
+            (repo) => `
         <article class="repo-card">
           <div class="repo-card-header">
             <a class="repo-card-title" href="${repo.html_url}" target="_blank" rel="noreferrer">
@@ -178,20 +178,20 @@ function renderRepos(repos) {
           </div>
         </article>
       `
-    )
-    .join('');
+        )
+        .join('');
 }
 
 window.addEventListener('DOMContentLoaded', () => {
-  loadRepositories().catch((error) => {
-    const grid = document.getElementById('repo-grid');
-    const meta = document.getElementById('repo-meta');
+    loadRepositories().catch((error) => {
+        const grid = document.getElementById('repo-grid');
+        const meta = document.getElementById('repo-meta');
 
-    meta.textContent = 'Unable to load repositories';
-    grid.innerHTML = `
+        meta.textContent = 'Unable to load repositories';
+        grid.innerHTML = `
       <div class="empty-state">
         ${escapeHtml(error.message)}
       </div>
     `;
-  });
+    });
 });
