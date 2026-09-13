@@ -1,0 +1,50 @@
+---
+import Layout from "../../layouts/Layout.astro";
+---
+
+<Layout title="Proyectos | Calileus" description="Proyectos destacados y feed dinámico de repositorios para Calileus." lang="es">
+  <section class="section-band section-intro border-t-0">
+    <p class="eyebrow">Proyectos</p>
+    <h1>Trabajo público que refleja estándares de ingeniería.</h1>
+    <p>Proyectos clave de mis organizaciones y un feed vivo de repositorios que se actualiza automáticamente desde GitHub.</p>
+  </section>
+
+  <section class="section-band">
+    <div class="grid-3">
+      <a href="https://github.com/ObsidianHonorCoders/ohc-template-repo" target="_blank" rel="noopener noreferrer" class="card">
+        <p class="eyebrow">Template</p>
+        <h2 class="text-xl font-semibold text-white">ohc-template-repo</h2>
+        <p class="mt-3 text-neutral-400">Base C++ orientada a producción con CMake, GoogleTest, CI/CD y controles de calidad.</p>
+      </a>
+      <a href="https://github.com/ObsidianHonorCoders/inheritance-chess" target="_blank" rel="noopener noreferrer" class="card">
+        <p class="eyebrow">Diseño de sistemas</p>
+        <h2 class="text-xl font-semibold text-white">inheritance-chess</h2>
+        <p class="mt-3 text-neutral-400">Motor de ajedrez C++20 modular para explorar polimorfismo, tradeoffs arquitectónicos y disciplina de pruebas.</p>
+      </a>
+      <a href="https://github.com/CalileusLab" target="_blank" rel="noopener noreferrer" class="card">
+        <p class="eyebrow">Organización</p>
+        <h2 class="text-xl font-semibold text-white">CalileusLab</h2>
+        <p class="mt-3 text-neutral-400">Sandbox de ingeniería para sistemas de alto rendimiento, experimentación y prácticas de C++ moderno.</p>
+      </a>
+    </div>
+  </section>
+
+  <section class="section-band">
+    <div class="repo-panel">
+      <div class="flex flex-wrap items-center justify-between gap-3 border-b border-neutral-800 pb-4">
+        <h2 class="text-2xl font-semibold text-white">Feed vivo de repositorios</h2>
+        <span id="repo-meta" class="text-sm text-neutral-400">Cargando repositorios…</span>
+      </div>
+
+      <div id="stats" class="grid gap-4 md:grid-cols-3 mt-5" aria-live="polite">
+        <div class="impact-item"><strong>Cargando…</strong><span>Repositorios</span></div>
+        <div class="impact-item"><strong>Cargando…</strong><span>Lenguajes</span></div>
+        <div class="impact-item"><strong>Cargando…</strong><span>Actualización</span></div>
+      </div>
+
+      <div id="repo-grid" class="repo-grid" aria-live="polite"></div>
+    </div>
+  </section>
+
+  <script src="/projects.js" defer></script>
+</Layout>
