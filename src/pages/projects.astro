@@ -1,0 +1,50 @@
+---
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout title="Projects | Calileus" description="Selected projects and live GitHub repository feed for Calileus." lang="en">
+  <section class="section-band section-intro border-t-0">
+    <p class="eyebrow">Projects</p>
+    <h1>Public work that reflects engineering standards.</h1>
+    <p>Key projects from my organizations plus a live repository feed that updates automatically from GitHub.</p>
+  </section>
+
+  <section class="section-band">
+    <div class="grid-3">
+      <a href="https://github.com/ObsidianHonorCoders/ohc-template-repo" target="_blank" rel="noopener noreferrer" class="card">
+        <p class="eyebrow">Template</p>
+        <h2 class="text-xl font-semibold text-white">ohc-template-repo</h2>
+        <p class="mt-3 text-neutral-400">Production-oriented C++ template with CMake, GoogleTest, CI/CD, and quality controls.</p>
+      </a>
+      <a href="https://github.com/ObsidianHonorCoders/inheritance-chess" target="_blank" rel="noopener noreferrer" class="card">
+        <p class="eyebrow">System Design</p>
+        <h2 class="text-xl font-semibold text-white">inheritance-chess</h2>
+        <p class="mt-3 text-neutral-400">Modular C++20 chess engine exploring polymorphism, architecture tradeoffs, and testing discipline.</p>
+      </a>
+      <a href="https://github.com/CalileusLab" target="_blank" rel="noopener noreferrer" class="card">
+        <p class="eyebrow">Organization</p>
+        <h2 class="text-xl font-semibold text-white">CalileusLab</h2>
+        <p class="mt-3 text-neutral-400">Engineering sandbox for high-performance systems, experimentation, and modern C++ practices.</p>
+      </a>
+    </div>
+  </section>
+
+  <section class="section-band">
+    <div class="repo-panel">
+      <div class="flex flex-wrap items-center justify-between gap-3 border-b border-neutral-800 pb-4">
+        <h2 class="text-2xl font-semibold text-white">Live repository feed</h2>
+        <span id="repo-meta" class="text-sm text-neutral-400">Loading repositories…</span>
+      </div>
+
+      <div id="stats" class="grid gap-4 md:grid-cols-3 mt-5" aria-live="polite">
+        <div class="impact-item"><strong>Loading…</strong><span>Repositories</span></div>
+        <div class="impact-item"><strong>Loading…</strong><span>Languages</span></div>
+        <div class="impact-item"><strong>Loading…</strong><span>Updated</span></div>
+      </div>
+
+      <div id="repo-grid" class="repo-grid" aria-live="polite"></div>
+    </div>
+  </section>
+
+  <script src="/projects.js" defer></script>
+</Layout>
