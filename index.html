@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description"
+        content="Landing page for Calileus with automatically updated public GitHub repositories." />
+    <title>Calileus | Projects</title>
+    <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+    <div class="page-shell">
+        <header class="site-header">
+            <div class="brand-block">
+                <p class="eyebrow">Landing page</p>
+                <h1>Calileus</h1>
+            </div>
+            <nav class="top-links" aria-label="Main navigation">
+                <a href="https://github.com/calileus" target="_blank" rel="noreferrer">GitHub</a>
+            </nav>
+        </header>
+
+        <main>
+            <section class="hero">
+                <div class="hero-copy">
+                    <p class="eyebrow">Open source work</p>
+                    <h2>Projects, experiments, and repositories.</h2>
+                    <p class="intro">
+                        This landing page automatically pulls public repositories from your GitHub
+                        account and the organizations you configure, so the list stays current as you
+                        add or update projects.
+                    </p>
+                </div>
+
+                <div class="stats" id="stats" aria-live="polite">
+                    <div class="stat-card">
+                        <span class="stat-label">Repositories</span>
+                        <strong>Loading…</strong>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-label">Languages</span>
+                        <strong>Loading…</strong>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-label">Updated</span>
+                        <strong>Loading…</strong>
+                    </div>
+                </div>
+            </section>
+
+            <section class="repo-panel">
+                <div class="section-heading">
+                    <h3>Recent repositories</h3>
+                    <span id="repo-meta">Loading repositories…</span>
+                </div>
+                <div id="repo-grid" class="repo-grid" aria-live="polite"></div>
+            </section>
+        </main>
+
+        <footer class="site-footer">
+            <p>Built with GitHub API data for a simple, always-current portfolio page.</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
