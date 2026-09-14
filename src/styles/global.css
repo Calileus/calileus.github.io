@@ -279,11 +279,11 @@
 
     .hero-visual__frame::after {
         content: '';
-        @apply absolute inset-0 bg-gradient-to-t from-neutral-950/80 via-transparent to-emerald-400/10;
+        @apply absolute inset-0 z-0 bg-gradient-to-t from-neutral-950/80 via-transparent to-emerald-400/10;
     }
 
     .hero-visual img {
-        @apply h-full w-full object-cover transition-transform duration-700;
+        @apply relative z-10 h-full w-full object-cover transition-transform duration-700;
     }
 
     .hero-visual:hover img {
