@@ -13,6 +13,24 @@ const description = "Calileus - Software Architect & Lead Developer. Modern C++,
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
     <meta name="theme-color" content="#064e3b" />
+    <script is:inline>
+      (() => {
+        const storageKey = "calileus-theme";
+        const savedTheme = localStorage.getItem(storageKey);
+        const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+        const theme = savedTheme === "light" || savedTheme === "dark"
+          ? savedTheme
+          : (prefersDark ? "dark" : "light");
+
+        document.documentElement.dataset.theme = theme;
+        document.documentElement.style.colorScheme = theme;
+
+        const themeMeta = document.querySelector('meta[name="theme-color"]');
+        if (themeMeta) {
+          themeMeta.setAttribute("content", theme === "dark" ? "#064e3b" : "#34d399");
+        }
+      })();
+    </script>
     <title>{title}</title>
     
     <!-- Open Graph / Social -->
@@ -64,7 +82,46 @@ const description = "Calileus - Software Architect & Lead Developer. Modern C++,
       }
     </style>
   </head>
-  <body class="antialiased bg-neutral-950 text-neutral-200">
+  <body class="antialiased">
     <slot />
+
+    <script is:inline>
+      (() => {
+        const storageKey = "calileus-theme";
+
+        const applyTheme = (theme) => {
+          document.documentElement.dataset.theme = theme;
+          document.documentElement.style.colorScheme = theme;
+
+          const themeMeta = document.querySelector('meta[name="theme-color"]');
+          if (themeMeta) {
+            themeMeta.setAttribute("content", theme === "dark" ? "#064e3b" : "#34d399");
+          }
+
+          document.querySelectorAll("[data-theme-label]").forEach((label) => {
+            label.textContent = theme === "dark" ? "Dark" : "Light";
+          });
+
+          document.querySelectorAll("[data-theme-toggle]").forEach((button) => {
+            button.setAttribute("aria-pressed", String(theme === "dark"));
+          });
+        };
+
+        const toggleTheme = () => {
+          const nextTheme = document.documentElement.dataset.theme === "dark" ? "light" : "dark";
+          localStorage.setItem(storageKey, nextTheme);
+          applyTheme(nextTheme);
+        };
+
+        window.addEventListener("DOMContentLoaded", () => {
+          document.querySelectorAll("[data-theme-toggle]").forEach((button) => {
+            button.addEventListener("click", toggleTheme);
+          });
+
+          const activeTheme = document.documentElement.dataset.theme === "dark" ? "dark" : "light";
+          applyTheme(activeTheme);
+        });
+      })();
+    </script>
   </body>
 </html>

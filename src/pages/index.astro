@@ -9,12 +9,21 @@ import Layout from "../layouts/Layout.astro";
         <span class="brand-mark__dot"></span>
         <span>Calileus<span class="text-brand-400">.</span></span>
       </a>
-      <nav class="hidden md:flex items-center gap-7 text-sm text-surface-400" aria-label="Main navigation">
-        <a href="#impact" class="nav-link">Impact</a>
-        <a href="#expertise" class="nav-link">Expertise</a>
-        <a href="#experience" class="nav-link">Experience</a>
-        <a href="https://www.linkedin.com/in/calileus" class="nav-cta">Let's talk <span aria-hidden="true">↗</span></a>
-      </nav>
+      <div class="flex items-center gap-4">
+        <nav class="hidden md:flex items-center gap-7 text-sm text-surface-400" aria-label="Main navigation">
+          <a href="#impact" class="nav-link">Impact</a>
+          <a href="#expertise" class="nav-link">Expertise</a>
+          <a href="#experience" class="nav-link">Experience</a>
+          <a href="https://www.linkedin.com/in/calileus" class="nav-cta">Let's talk <span aria-hidden="true">↗</span></a>
+        </nav>
+        <button type="button" class="theme-toggle" data-theme-toggle aria-label="Toggle light and dark theme" aria-pressed="false">
+          <span class="theme-toggle__icon" aria-hidden="true">
+            <span class="theme-toggle__glyph theme-toggle__glyph--sun">☀</span>
+            <span class="theme-toggle__glyph theme-toggle__glyph--moon">☾</span>
+          </span>
+          <span class="hidden md:inline" data-theme-label>Dark</span>
+        </button>
+      </div>
     </div>
   </header>
 
@@ -23,7 +32,7 @@ import Layout from "../layouts/Layout.astro";
       <div class="hero-grid-pattern" aria-hidden="true"></div>
       <div class="hero-copy">
         <p class="eyebrow"><span class="status-dot"></span> Software Architect</p>
-        <h1 id="hero-heading">Building dependable systems for <span class="gradient-text">high-stakes software.</span></h1>
+        <h1 id="hero-heading">Building <span class="gradient-text">dependable software.</span></h1>
         <p class="hero-lede">I turn complex product requirements into clear architecture, disciplined delivery systems, and production-ready C++ software.</p>
         <div class="flex flex-wrap gap-4 items-center mt-9">
           <a href="#experience" class="btn-primary">Explore my work <span aria-hidden="true">↓</span></a>
