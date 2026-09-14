@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#022c22;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#064e3b;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#065f46;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="accentGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#10b981;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0d9488;stop-opacity:1" />
+    </linearGradient>
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="10" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="1200" height="630" fill="url(#bgGrad)"/>
+  
+  <!-- Decorative elements -->
+  <circle cx="150" cy="150" r="200" fill="url(#accentGrad)" opacity="0.08" filter="url(#glow)"/>
+  <circle cx="1050" cy="480" r="180" fill="url(#accentGrad)" opacity="0.06" filter="url(#glow)"/>
+  
+  <!-- Grid pattern -->
+  <g opacity="0.03">
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#10b981" stroke-width="1"/>
+    </pattern>
+    <rect width="1200" height="630" fill="url(#grid)"/>
+  </g>
+  
+  <!-- Content -->
+  <g font-family="Space Grotesk, sans-serif">
+    <!-- Title -->
+    <text x="600" y="240" text-anchor="middle" font-size="56" font-weight="700" fill="white" letter-spacing="-0.02em">
+      Calileus
+    </text>
+    
+    <!-- Subtitle -->
+    <text x="600" y="310" text-anchor="middle" font-size="24" font-weight="500" fill="#6ee7b7" letter-spacing="0.05em" style="text-transform: uppercase;">
+      Software Architect &amp; Lead Developer
+    </text>
+    
+    <!-- Divider -->
+    <line x1="500" y1="340" x2="700" y2="340" stroke="url(#accentGrad)" stroke-width="3" stroke-linecap="round"/>
+    
+    <!-- Tags -->
+    <g font-family="JetBrains Mono, monospace" font-size="16" fill="#a7f3d0">
+      <text x="600" y="390" text-anchor="middle" fill="#34d399">
+        Modern C++  ·  Distributed Systems  ·  CI/CD  ·  Software Quality
+      </text>
+    </g>
+    
+    <!-- Location -->
+    <text x="600" y="460" text-anchor="middle" font-size="18" font-weight="400" fill="#94a3b8" font-family="JetBrains Mono, monospace">
+      Querétaro, Mexico
+    </text>
+    
+    <!-- GitHub handle -->
+    <text x="600" y="520" text-anchor="middle" font-size="16" font-weight="500" fill="#64748b" font-family="JetBrains Mono, monospace">
+      github.com/Calileus
+    </text>
+  </g>
+  
+  <!-- Bottom accent bar -->
+  <rect x="0" y="600" width="1200" height="30" fill="url(#accentGrad)" opacity="0.3"/>
+</svg>

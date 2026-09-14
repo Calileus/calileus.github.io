@@ -1,0 +1,414 @@
+---
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout title="Calileus | Software Architect">
+  <header class="site-header">
+    <div class="max-w-6xl mx-auto px-6 flex items-center justify-between h-20">
+      <a href="#top" class="brand-mark" aria-label="Calileus home">
+        <span class="brand-mark__dot"></span>
+        <span>Calileus<span class="text-brand-400">.</span></span>
+      </a>
+      <nav class="hidden md:flex items-center gap-7 text-sm text-surface-400" aria-label="Main navigation">
+        <a href="#impact" class="nav-link">Impact</a>
+        <a href="#expertise" class="nav-link">Expertise</a>
+        <a href="#experience" class="nav-link">Experience</a>
+        <a href="https://www.linkedin.com/in/calileus" class="nav-cta">Let's talk <span aria-hidden="true">↗</span></a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero-section max-w-6xl mx-auto px-6" aria-labelledby="hero-heading">
+      <div class="hero-grid-pattern" aria-hidden="true"></div>
+      <div class="hero-copy">
+        <p class="eyebrow"><span class="status-dot"></span> Software Architect</p>
+        <h1 id="hero-heading">Building dependable systems for <span class="gradient-text">high-stakes software.</span></h1>
+        <p class="hero-lede">I turn complex product requirements into clear architecture, disciplined delivery systems, and production-ready C++ software.</p>
+        <div class="flex flex-wrap gap-4 items-center mt-9">
+          <a href="#experience" class="btn-primary">Explore my work <span aria-hidden="true">↓</span></a>
+          <a href="https://www.linkedin.com/in/calileus" class="btn-secondary">Get in touch <span aria-hidden="true">↗</span></a>
+        </div>
+        <div class="hero-meta"><span class="meta-divider"></span><span>M.Sc. Mathematics · Querétaro, Mexico</span><span class="meta-divider"></span></div>
+      </div>
+      <aside class="hero-visual" aria-label="Calileus engineering identity">
+        <div class="hero-visual__frame">
+          <img src={`${import.meta.env.BASE_URL}profile.jpg`} alt="Calileus illustrated engineering identity" />
+          <div class="hero-visual__scanline" aria-hidden="true"></div>
+          <div class="hero-visual__label hero-visual__label--top">CALILEUS / SYSTEMS LAB</div>
+          <div class="hero-visual__label hero-visual__label--bottom"><span class="status-dot"></span> BUILDING WITH INTENT</div>
+        </div>
+        <div class="hero-visual__caption"><span>Personal mark</span><strong>Code · Honor · Legacy</strong></div>
+      </aside>
+    </section>
+
+    <section id="impact" class="section-band max-w-6xl mx-auto px-6" aria-labelledby="impact-heading">
+      <div class="section-intro"><p class="eyebrow">01 / OUTCOMES</p><h2 id="impact-heading">Engineering judgment, measured.</h2><p>Senior engineering is making the right tradeoffs visible. These are the outcomes I use to evaluate whether a system and a team are getting better.</p></div>
+      <div class="impact-grid">
+        <div class="impact-item impact-item--featured"><strong>60<span>%</span></strong><span>review effort reduction via 10+ GitHub Actions workflows deployed across 8 components, adopted by 25+ contributors</span></div>
+        <div class="impact-item"><strong>58<span>+</span></strong><span>releases delivered; 12 customer-facing releases supporting North American production programs</span></div>
+        <div class="impact-item"><strong>100<span>%</span></strong><span>first-pass execution success (improved from 20%); integration reliability and deployment consistency</span></div>
+        <div class="impact-item"><strong>80<span>%</span></strong><span>package reduction after modernizing legacy monolithic codebase into modular architecture</span></div>
+        <div class="impact-item"><strong>14</strong><span>multidisciplinary engineers led through quotation, planning, implementation, validation, and deployment</span></div>
+        <div class="impact-item"><strong>2,538</strong><span>commits · 280+ code reviews · 240+ merged PRs as primary repository maintainer</span></div>
+      </div>
+    </section>
+
+    <section id="expertise" class="section-band max-w-6xl mx-auto px-6" aria-labelledby="expertise-heading">
+      <div class="section-intro"><p class="eyebrow">02 / CAPABILITIES</p><h2 id="expertise-heading">From architecture intent to working software.</h2><p>A pragmatic technical range grounded in modern C++, quality engineering, and the operating systems that make delivery repeatable.</p></div>
+      <div class="capability-grid">
+        <article class="capability-card"><span class="capability-number">01</span><h3>Architecture & design</h3><p>Component boundaries, event-driven systems, object processing pipelines, API design, and cross-platform decomposition. Automotive systems: safety-critical software, MISRA compliance, sensor fusion patterns.</p><div class="tag-row"><span>C++20</span><span>Distributed systems</span><span>Protobuf</span><span>Safety-critical</span></div></article>
+        <article class="capability-card"><span class="capability-number">02</span><h3>Quality as a system</h3><p>MISRA C/C++, static analysis, review standards, test strategy, and automated gates that protect engineering focus. Enforcement mechanisms that scale from 5 to 50+ engineers.</p><div class="tag-row"><span>GoogleTest</span><span>clang-format</span><span>CI quality gates</span><span>Code review discipline</span></div></article>
+        <article class="capability-card"><span class="capability-number">03</span><h3>Delivery leadership</h3><p>Repository governance, release models, technical direction, mentoring, and the communication between product and engineering. Cross-platform (Linux/Windows) deployment, customer integration workflows.</p><div class="tag-row"><span>GitHub Actions</span><span>CMake</span><span>Linux / Windows</span><span>Team mentoring</span></div></article>
+      </div>
+    </section>
+
+    <section class="section-band max-w-6xl mx-auto px-6" aria-labelledby="philosophy-heading">
+      <div class="section-intro"><p class="eyebrow">02.5 / PHILOSOPHY</p><h2 id="philosophy-heading">How I approach software architecture.</h2></div>
+      <div class="philosophy-panel">
+        <p>Dependable software isn't built by individuals—it's built by <strong>systems</strong>. Every architecture I design optimizes for three principles:</p>
+        <ul class="philosophy-list">
+          <li><strong>Clarity</strong> — A system is only as good as the next engineer's ability to understand and modify it. Explicit design decisions, minimal coupling, and living documentation matter more than clever code.</li>
+          <li><strong>Testability</strong> — Architecture shapes testability. I design components with clear boundaries, single responsibilities, that can be tested in isolation. This is how quality scales from 5 engineers to 50.</li>
+          <li><strong>Team Scalability</strong> — The most important metric: does this architecture make it easier or harder for my team to deliver? Automated quality gates, consistent review standards, and clear governance reduce friction.</li>
+        </ul>
+        <p>In automotive systems—where dependability means safety for millions of vehicles—these principles aren't optional. MISRA compliance, formal methods, and review discipline are how you build systems that compound in quality over time.</p>
+      </div>
+    </section>
+
+    <section class="section-band max-w-6xl mx-auto px-6" aria-labelledby="certs-heading">
+      <div class="section-intro"><p class="eyebrow">02.75 / CONTINUOUS LEARNING</p><h2 id="certs-heading">Staying current with emerging domains.</h2><p>I invest in certifications and skills that shape the future of automotive systems and distributed software.</p></div>
+      <div class="certs-grid">
+        <div class="cert-card">
+          <div class="cert-year">2026</div>
+          <h3>Google AI Essentials</h3>
+          <p class="cert-issuer">Google</p>
+          <p class="cert-desc">Preparing for AI-driven automotive systems and responsible AI in safety-critical contexts.</p>
+        </div>
+        <div class="cert-card">
+          <div class="cert-year">2025</div>
+          <h3>Secure Software Design Specialization</h3>
+          <p class="cert-issuer">University of Colorado</p>
+          <p class="cert-desc">Advanced patterns in secure systems design, threat modeling, and cryptographic fundamentals for distributed systems.</p>
+        </div>
+        <div class="cert-card">
+          <div class="cert-year">2023</div>
+          <h3>Parallel & GPU Programming (CUDA)</h3>
+          <p class="cert-issuer">Johns Hopkins University</p>
+          <p class="cert-desc">High-performance computing for signal processing and sensor fusion in automotive radar systems.</p>
+        </div>
+        <div class="cert-card">
+          <div class="cert-year">2024</div>
+          <h3>EF SET English Certificate</h3>
+          <p class="cert-issuer">EF Education First</p>
+          <p class="cert-desc">C1 Advanced proficiency supporting international team collaboration and technical communication.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="experience" class="section-band max-w-6xl mx-auto px-6" aria-labelledby="experience-heading">
+      <div class="section-intro"><p class="eyebrow">03 / EXPERIENCE</p><h2 id="experience-heading">Ownership that spans the whole lifecycle.</h2></div>
+      <div class="experience-list">
+        <article class="experience-item experience-item--current"><div class="experience-date">APR 2022 — PRESENT</div><div><div class="experience-role"><h3>Software Architect & Lead Developer</h3><span class="experience-current">CURRENT</span><span class="experience-badge">NOMINATED AUMOVIO AWARDS 2026</span></div><p class="experience-company">AUMOVIO / Continental Autonomous Mobility</p><ul><li>Sole Software Architect for greenfield Automotive Radar Logic Model; led 14-person multidisciplinary team through quotation, planning, architecture definition, implementation, validation, customer integration, and production deployment to North American market.</li><li>Architected object-processing pipeline (detection-list processing, tracking, classification, customer object-list generation) with protobuf-based interfaces and FMI simulation integration.</li><li>Designed and deployed 10+ GitHub Actions workflows (build validation, formatting, testing, release quality controls) across 8 components; adopted by 25+ contributors; reduced review effort by 60%.</li><li>Automated quality gates enforcing MISRA C/C++, clang-format, and repository standards; improved first-pass execution success from 20% to nearly 100%.</li><li>Defined cross-platform (Windows/Linux) architecture, branching strategy, versioning model, release process, and repository governance standards.</li><li>Onboarded 17 contributors; mentored 3 junior developers to mid-level competency; acted as primary technical reviewer with 2,538+ commits and 280+ code reviews.</li></ul></div></article>
+        <article class="experience-item"><div class="experience-date">2015 — 2022</div><div><h3>University Professor | Academic Manager | Logic Olympiad Facilitator</h3><p class="experience-company">Polytechnic University of Querétaro / Autonomous University of Querétaro</p><ul><li>Taught C/C++ programming, linear algebra, differential equations, vector calculus, and formal logic to 100+ students; mentored competitive programming and software engineering problem-solvers.</li><li>Developed automated grading and contest-management software, reducing evaluation effort and enabling large-scale assessments.</li><li>Served as Academic Manager for Mexican Logic Olympiad, preparing examination content and establishing standards for national competition.</li><li>Built curriculum foundations combining formal mathematics with practical software engineering—principles directly applied to safety-critical systems today.</li></ul></div></article>
+        <article class="experience-item"><div class="experience-date">2014 — 2016</div><div><h3>Software Development Consultant</h3><p class="experience-company">REXAM · IMPULSE TELECOM · Sancorzep Group · REGULES</p><ul><li>Delivered custom enterprise software solutions for asset inventory management and operational support systems using SQL, C++, and WinAPI technologies.</li><li>Managed complete software lifecycle from requirements gathering through solution design, coding, deployment, user training, and maintenance.</li></ul></div></article>
+      </div>
+    </section>
+
+    <section id="testimonials" class="section-band max-w-6xl mx-auto px-6" aria-labelledby="testimonials-heading">
+      <div class="section-intro"><p class="eyebrow">03.5 / TRUSTED BY LEADERS</p><h2 id="testimonials-heading">Feedback from teammates and collaborators.</h2><p>What peers say about working with me on architecture, quality, and team leadership.</p></div>
+      <div class="testimonials-grid">
+        <article class="testimonial-card">
+          <div class="testimonial-quote">"He brings strong technical expertise and is genuinely supportive to work with. He grasps context very quickly and is always open to discussion—free-minded and welcoming of suggestions. He consistently goes the extra mile to get issues resolved and make understanding very clear. His grasp of embedded systems and ADAS algorithms allows him to give very valuable, well-grounded feedback."</div>
+          <div class="testimonial-author">
+            <div class="testimonial-name">Sachin Joshi</div>
+            <div class="testimonial-title">Radar SW Chief Architect</div>
+            <div class="testimonial-location">AUMOVIO, Bengaluru</div>
+          </div>
+        </article>
+        <article class="testimonial-card">
+          <div class="testimonial-quote">"He orchestrates and maintains cohesion among the team tasks, allowing that all efforts push in the same direction towards the team goal. He has had an outstanding performance in the team, taking ownership and helping keep efforts aligned."</div>
+          <div class="testimonial-author">
+            <div class="testimonial-name">Mario Pantoja</div>
+            <div class="testimonial-title">R&D Algorithms Engineer</div>
+            <div class="testimonial-location">AUMOVIO, Querétaro</div>
+          </div>
+        </article>
+        <article class="testimonial-card">
+          <div class="testimonial-quote">"Great knowledge about C++ programming. Excellent attitude to support the team. You bring dedicated energy and consistently contribute in meaningful ways that elevate everyone around you."</div>
+          <div class="testimonial-author">
+            <div class="testimonial-name">Elí Ramírez</div>
+            <div class="testimonial-title">R&D Algorithms Engineer</div>
+            <div class="testimonial-location">AUMOVIO, Querétaro</div>
+          </div>
+        </article>
+        <article class="testimonial-card testimonial-card--highlight">
+          <div class="testimonial-quote">"[Testimonial from additional reference - contact for details]"</div>
+          <div class="testimonial-author">
+            <div class="testimonial-name">Additional Reference</div>
+            <div class="testimonial-title">Available upon request</div>
+            <div class="testimonial-location"></div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section-band max-w-6xl mx-auto px-6" aria-labelledby="projects-heading">
+      <div class="section-intro"><p class="eyebrow">04 / SELECTED WORK</p><h2 id="projects-heading">A public record of engineering standards.</h2><p>Open-source work demonstrating architecture principles, quality discipline, and the team practices I apply to production systems.</p><div class="github-stats"><span><strong>2,538</strong> commits</span><span class="stat-divider"></span><span><strong>280+</strong> code reviews</span><span class="stat-divider"></span><span><strong>240+</strong> merged PRs</span></div></div>
+      <div class="project-grid">
+        <a href="https://github.com/ObsidianHonorCoders/ohc-template-repo" target="_blank" rel="noopener noreferrer" class="project-card"><div class="project-top"><span class="project-type">ENGINEERING TEMPLATE</span><span aria-hidden="true">↗</span></div><h3>ohc-template-repo</h3><p>A reusable C++ foundation with Dev Containers, CMake, GoogleTest, GitHub Actions, automated code quality controls, documentation tooling, and cross-platform CI/CD. Demonstrates the repository governance and engineering standards I establish on production teams.</p><span class="project-link">View repository</span></a>
+        <a href="https://github.com/ObsidianHonorCoders/inheritance-chess" target="_blank" rel="noopener noreferrer" class="project-card"><div class="project-top"><span class="project-type">C++20 SYSTEM</span><span aria-hidden="true">↗</span></div><h3>inheritance-chess</h3><p>A modular chess engine exploring polymorphic object-oriented design, component-based architecture, event-driven systems, and cross-platform testing. Exhibits the same design tradeoffs (elegance vs. performance) and architecture decisions I apply to automotive systems.</p><span class="project-link">View repository</span></a>
+        <a href="https://github.com/ObsidianHonorCoders" target="_blank" rel="noopener noreferrer" class="project-card"><div class="project-top"><span class="project-type">COMMUNITY</span><span aria-hidden="true">↗</span></div><h3>Obsidian Honor Coders</h3><p>An engineering organization focused on modern C++, software quality, and collaborative development practices. Built on the philosophy: "Sharp Logic. High RPM. Unshakable Integrity."</p><span class="project-link">Explore the organization</span></a>
+      </div>
+    </section>
+
+    <section class="closing-section max-w-6xl mx-auto px-6" aria-labelledby="contact-heading">
+      <div class="closing-panel"><p class="eyebrow">05 / CONTACT</p><h2 id="contact-heading">Good systems start with a good conversation.</h2><p>For architecture leadership, modern C++, or engineering excellence, I would be glad to compare notes.</p><div class="flex flex-wrap gap-4 mt-8"><a href="https://www.linkedin.com/in/calileus" target="_blank" rel="noopener noreferrer" class="btn-primary">LinkedIn <span aria-hidden="true">↗</span></a><a href="https://github.com/Calileus" target="_blank" rel="noopener noreferrer" class="btn-secondary">GitHub <span aria-hidden="true">↗</span></a></div></div>
+    </section>
+
+    <section id="live-repositories" class="section-band max-w-6xl mx-auto px-6" aria-labelledby="live-repositories-heading">
+      <div class="section-intro">
+        <p class="eyebrow">06 / LIVE REPOSITORIES</p>
+        <h2 id="live-repositories-heading">Projects, experiments, and repositories.</h2>
+        <p>This section automatically pulls public repositories from configured GitHub sources, so it stays current as projects evolve.</p>
+      </div>
+      <div class="space-y-6">
+        <div class="live-stats" id="stats" aria-live="polite">
+          <div class="live-stat-card">
+            <span class="live-stat-label">Repositories</span>
+            <strong>Loading…</strong>
+          </div>
+          <div class="live-stat-card">
+            <span class="live-stat-label">Languages</span>
+            <strong>Loading…</strong>
+          </div>
+          <div class="live-stat-card">
+            <span class="live-stat-label">Updated</span>
+            <strong>Loading…</strong>
+          </div>
+        </div>
+
+        <div class="live-repo-panel">
+          <div class="live-repo-header">
+            <h3>Recent repositories</h3>
+            <span id="repo-meta">Loading repositories…</span>
+          </div>
+          <div id="repo-grid" class="live-repo-grid" aria-live="polite"></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="max-w-6xl mx-auto px-6 py-8 footer-line"><span>© {new Date().getFullYear()} Calileus</span><span>Built with Astro · Deployed on GitHub Pages</span></footer>
+
+  <script is:inline>
+    const configuration = {
+      githubUser: "calileus",
+      organizations: ["CalileusLab", "ObsidianHonorCoders"],
+      excludeForks: true,
+      includeYourAccount: true,
+    };
+
+    const API_BASE = "https://api.github.com";
+
+    function isConfiguredOrg(orgName) {
+      return Boolean(orgName && orgName.trim() && !orgName.startsWith("YOUR_ORG_"));
+    }
+
+    function escapeHtml(value) {
+      return String(value ?? "")
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/\"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+    }
+
+    function formatUpdatedAt(value) {
+      if (!value) {
+        return "Recently";
+      }
+
+      const date = new Date(value);
+      return new Intl.DateTimeFormat("en", {
+        month: "short",
+        day: "numeric",
+        year: "numeric",
+      }).format(date);
+    }
+
+    async function fetchJson(url) {
+      const response = await fetch(url, {
+        headers: {
+          Accept: "application/vnd.github+json",
+        },
+      });
+
+      if (!response.ok) {
+        throw new Error(`GitHub API request failed: ${response.status} ${response.statusText}`);
+      }
+
+      return response.json();
+    }
+
+    async function loadRepositories() {
+      const sources = [];
+
+      if (configuration.includeYourAccount) {
+        sources.push({
+          label: configuration.githubUser,
+          request: fetchJson(`${API_BASE}/users/${configuration.githubUser}/repos?sort=updated&per_page=100`),
+        });
+      }
+
+      for (const org of configuration.organizations) {
+        if (!isConfiguredOrg(org)) {
+          continue;
+        }
+
+        sources.push({
+          label: org,
+          request: fetchJson(`${API_BASE}/orgs/${org}/repos?sort=updated&per_page=100`),
+        });
+      }
+
+      const results = await Promise.allSettled(
+        sources.map(async (source) => ({
+          source: source.label,
+          repos: await source.request,
+        }))
+      );
+
+      const repoMap = new Map();
+      const errors = [];
+
+      results.forEach((result) => {
+        if (result.status === "rejected") {
+          errors.push(result.reason.message);
+          return;
+        }
+
+        const repos = Array.isArray(result.value.repos) ? result.value.repos : [];
+
+        repos.forEach((repo) => {
+          if (!repo || repo.private) {
+            return;
+          }
+
+          if (configuration.excludeForks && repo.fork) {
+            return;
+          }
+
+          if (!repoMap.has(repo.id)) {
+            repoMap.set(repo.id, repo);
+          }
+        });
+      });
+
+      const repos = [...repoMap.values()].sort((a, b) => {
+        return new Date(b.updated_at) - new Date(a.updated_at);
+      });
+
+      renderStats(repos);
+      renderRepos(repos);
+
+      if (errors.length > 0) {
+        console.warn("One or more GitHub sources could not be loaded:", errors);
+      }
+    }
+
+    function renderStats(repos) {
+      const statsContainer = document.getElementById("stats");
+      if (!statsContainer) {
+        return;
+      }
+
+      const languages = new Set(
+        repos
+          .map((repo) => repo.language)
+          .filter(Boolean)
+      );
+
+      const newest = repos[0]?.updated_at ?? null;
+
+      statsContainer.innerHTML = `
+        <div class="live-stat-card">
+          <span class="live-stat-label">Repositories</span>
+          <strong>${repos.length}</strong>
+        </div>
+        <div class="live-stat-card">
+          <span class="live-stat-label">Languages</span>
+          <strong>${languages.size}</strong>
+        </div>
+        <div class="live-stat-card">
+          <span class="live-stat-label">Updated</span>
+          <strong>${newest ? formatUpdatedAt(newest) : "N/A"}</strong>
+        </div>
+      `;
+    }
+
+    function renderRepos(repos) {
+      const grid = document.getElementById("repo-grid");
+      const meta = document.getElementById("repo-meta");
+
+      if (!grid || !meta) {
+        return;
+      }
+
+      meta.textContent = `${repos.length} repositories across your configured GitHub sources`;
+
+      if (!repos.length) {
+        grid.innerHTML = `
+          <div class="live-empty-state">
+            No public repositories were returned for the configured GitHub sources.
+          </div>
+        `;
+        return;
+      }
+
+      grid.innerHTML = repos
+        .map(
+          (repo) => `
+            <article class="live-repo-card">
+              <div class="live-repo-card-header">
+                <a class="live-repo-card-title" href="${repo.html_url}" target="_blank" rel="noreferrer">
+                  ${escapeHtml(repo.name)}
+                </a>
+                <span class="live-repo-badge">${repo.fork ? "Fork" : "Public"}</span>
+              </div>
+
+              <p class="live-repo-description">
+                ${escapeHtml(repo.description || "No description provided.")}
+              </p>
+
+              <div class="live-repo-metadata">
+                <span>Language: ${escapeHtml(repo.language || "N/A")}</span>
+                <span>⭐ ${repo.stargazers_count ?? 0}</span>
+                <span>🍴 ${repo.forks_count ?? 0}</span>
+                <span>Updated ${formatUpdatedAt(repo.updated_at)}</span>
+              </div>
+            </article>
+          `
+        )
+        .join("");
+    }
+
+    window.addEventListener("DOMContentLoaded", () => {
+      loadRepositories().catch((error) => {
+        const grid = document.getElementById("repo-grid");
+        const meta = document.getElementById("repo-meta");
+
+        if (!grid || !meta) {
+          return;
+        }
+
+        meta.textContent = "Unable to load repositories";
+        grid.innerHTML = `
+          <div class="live-empty-state">
+            ${escapeHtml(error.message)}
+          </div>
+        `;
+      });
+    });
+  </script>
+</Layout>
