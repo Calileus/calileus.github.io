@@ -1,0 +1,77 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { featuredRepositories, projects } from "../data/portfolio";
+import { repositoryFeedConfig } from "../data/repositories";
+---
+
+<Layout title="Projects & Code | Calileus" description="Open-source C++ systems, repository standards, and active public engineering work by Calileus." path="/projects">
+  <main>
+    <section class="page-intro mx-auto max-w-6xl px-6 py-24" aria-labelledby="projects-heading"><p class="eyebrow">PROJECTS & CODE</p><h1 id="projects-heading">Public proof of engineering practice.</h1><p>Open-source work that makes architecture, quality controls, and cross-platform delivery practices inspectable.</p></section>
+    <section class="section-band mx-auto max-w-6xl px-6" aria-labelledby="featured-heading">
+      <div class="section-intro"><p class="eyebrow">01 / FEATURED WORK</p><h2 id="featured-heading">Systems with room for deeper case studies.</h2><p>Case studies are being developed from the design and delivery materials behind each project.</p></div>
+      <div class="project-grid">{projects.map((project) => <article class="project-card"><div class="project-top"><span class="project-type">{project.type}</span><a href={project.url} target="_blank" rel="noopener noreferrer" aria-label={`Open ${project.name} repository`}>↗</a></div><h3>{project.name}</h3><p>{project.summary}</p><div class="tag-row">{project.focus.map((item) => <span>{item}</span>)}</div><p class="project-status">Case study in progress</p></article>)}</div>
+    </section>
+    <section class="section-band mx-auto max-w-6xl px-6" aria-labelledby="repositories-heading">
+      <div class="section-intro"><p class="eyebrow">02 / LIVE REPOSITORIES</p><h2 id="repositories-heading">Recent relevant public work.</h2><p>A filtered feed of active repositories, prioritizing C++, C, and CMake work.</p></div>
+      <div class="live-repo-panel"><div class="live-repo-header"><h3>Repositories</h3><span id="repo-meta" aria-live="polite">Loading repositories</span></div><div id="repo-grid" class="live-repo-grid" aria-live="polite"></div></div>
+    </section>
+  </main>
+
+  <script define:vars={{ repositoryFeedConfig, featuredRepositories }}>
+    const apiBase = "https://api.github.com";
+    const grid = document.getElementById("repo-grid");
+    const meta = document.getElementById("repo-meta");
+
+    const escapeHtml = (value) => String(value ?? "")
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;")
+      .replace(/'/g, "&#039;");
+
+    const formatDate = (value) => value ? new Intl.DateTimeFormat("en", { month: "short", day: "numeric", year: "numeric" }).format(new Date(value)) : "Recently";
+
+    const card = (repository) => `
+      <article class="live-repo-card">
+        <div class="live-repo-card-header"><a class="live-repo-card-title" href="${repository.url}" target="_blank" rel="noopener noreferrer">${escapeHtml(repository.name)}</a><span class="live-repo-badge">${escapeHtml(repository.language || "Featured")}</span></div>
+        <p class="live-repo-description">${escapeHtml(repository.description || "No description provided.")}</p>
+        ${repository.updatedAt ? `<div class="live-repo-metadata"><span>Updated ${formatDate(repository.updatedAt)}</span><span>Stars ${repository.stars ?? 0}</span><span>Forks ${repository.forks ?? 0}</span></div>` : ""}
+      </article>`;
+
+    const showFallback = () => {
+      if (!grid || !meta) return;
+      meta.textContent = "Featured repositories";
+      grid.innerHTML = featuredRepositories.map((repository) => card({ ...repository, language: "Featured" })).join("");
+    };
+
+    const isEligible = (repository) => {
+      const name = repository.name.toLowerCase();
+      const topics = (repository.topics || []).map((topic) => topic.toLowerCase());
+      return !repository.private && !repository.fork && !repository.archived && !name.startsWith(".")
+        && !repositoryFeedConfig.excludedNames.includes(name)
+        && !topics.some((topic) => repositoryFeedConfig.excludedTopics.includes(topic));
+    };
+
+    const score = (repository) => repositoryFeedConfig.preferredLanguages.includes(repository.language) ? 1 : 0;
+
+    const fetchRepositories = async (source) => {
+      const response = await fetch(`${apiBase}/${source}?sort=updated&per_page=100`, { headers: { Accept: "application/vnd.github+json" } });
+      if (!response.ok) throw new Error("Repository source unavailable");
+      return response.json();
+    };
+
+    const loadRepositories = async () => {
+      const sources = [`users/${repositoryFeedConfig.githubUser}/repos`, ...repositoryFeedConfig.organizations.map((organization) => `orgs/${organization}/repos`)];
+      const results = await Promise.allSettled(sources.map(fetchRepositories));
+      const repositories = results.filter((result) => result.status === "fulfilled").flatMap((result) => result.value).filter(isEligible);
+      const unique = [...new Map(repositories.map((repository) => [repository.id, repository])).values()];
+      const selected = unique.sort((left, right) => score(right) - score(left) || new Date(right.updated_at) - new Date(left.updated_at)).slice(0, repositoryFeedConfig.limit);
+      if (!selected.length) return showFallback();
+      if (!grid || !meta) return;
+      meta.textContent = `${selected.length} active repositories`;
+      grid.innerHTML = selected.map((repository) => card({ name: repository.name, url: repository.html_url, language: repository.language, description: repository.description, updatedAt: repository.updated_at, stars: repository.stargazers_count, forks: repository.forks_count })).join("");
+    };
+
+    loadRepositories().catch(showFallback);
+  </script>
+</Layout>

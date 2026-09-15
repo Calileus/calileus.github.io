@@ -1,0 +1,54 @@
+---
+interface Props {
+  currentPath: string;
+}
+
+const { currentPath } = Astro.props;
+
+const navigation = [
+  { href: "/architecture", label: "Architecture" },
+  { href: "/experience", label: "Experience" },
+  { href: "/projects", label: "Projects" },
+  { href: "/credentials", label: "Credentials" },
+];
+
+const isActive = (href: string) => currentPath === href;
+---
+
+<header class="site-header">
+  <div class="mx-auto flex h-20 max-w-6xl items-center justify-between px-6">
+    <a href="/" class="brand-mark" aria-label="Calileus home">
+      <span class="brand-mark__dot"></span>
+      <span>Calileus<span class="text-brand-400">.</span></span>
+    </a>
+
+    <div class="flex items-center gap-4">
+      <nav class="hidden items-center gap-7 text-sm md:flex" aria-label="Main navigation">
+        {navigation.map((item) => (
+          <a href={item.href} class:list={["nav-link", { "nav-link--active": isActive(item.href) }]} aria-current={isActive(item.href) ? "page" : undefined}>
+            {item.label}
+          </a>
+        ))}
+        <a href="https://www.linkedin.com/in/calileus" target="_blank" rel="noopener noreferrer" class="nav-cta">Let's talk <span aria-hidden="true">↗</span></a>
+      </nav>
+
+      <details class="relative md:hidden">
+        <summary class="theme-toggle cursor-pointer list-none" aria-label="Open navigation menu">Menu</summary>
+        <nav class="absolute right-0 top-12 z-50 grid min-w-44 gap-1 border p-2 text-sm" aria-label="Mobile navigation" style="background-color: rgb(var(--surface)); border-color: rgb(var(--border));">
+          {navigation.map((item) => (
+            <a href={item.href} class:list={["nav-link", "px-3 py-2", { "nav-link--active": isActive(item.href) }]} aria-current={isActive(item.href) ? "page" : undefined}>{item.label}</a>
+          ))}
+          <a href="https://www.linkedin.com/in/calileus" target="_blank" rel="noopener noreferrer" class="nav-link px-3 py-2">LinkedIn <span aria-hidden="true">↗</span></a>
+        </nav>
+      </details>
+
+      <button type="button" class="theme-toggle" data-theme-toggle aria-label="Toggle light and dark theme" aria-pressed="false">
+        <span class="theme-toggle__icon" aria-hidden="true">
+          <span class="theme-toggle__glyph theme-toggle__glyph--sun">☀</span>
+          <span class="theme-toggle__glyph theme-toggle__glyph--moon">☾</span>
+        </span>
+        <span class="hidden md:inline" data-theme-label>Dark</span>
+      </button>
+    </div>
+  </div>
+</header>

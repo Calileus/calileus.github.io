@@ -1,0 +1,18 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { experience, testimonials } from "../data/portfolio";
+---
+
+<Layout title="Experience & Leadership | Calileus" description="Professional experience in automotive software architecture, technical leadership, teaching, and software consulting." path="/experience">
+  <main>
+    <section class="page-intro mx-auto max-w-6xl px-6 py-24" aria-labelledby="experience-heading"><p class="eyebrow">EXPERIENCE & LEADERSHIP</p><h1 id="experience-heading">Ownership across the full delivery lifecycle.</h1><p>From architecture definition to customer integration, I work at the point where technical decisions become dependable products and capable teams.</p></section>
+    <section class="section-band mx-auto max-w-6xl px-6" aria-labelledby="timeline-heading">
+      <div class="section-intro"><p class="eyebrow">01 / TIMELINE</p><h2 id="timeline-heading">Industry, academia, and consulting.</h2><p>Experience across safety-critical software, technical education, and end-to-end business systems.</p></div>
+      <div class="experience-list">{experience.map((role) => <article class:list={["experience-item", { "experience-item--current": role.current }]}><div class="experience-date">{role.period}</div><div><div class="experience-role"><h3>{role.role}</h3>{role.current && <span class="experience-current">CURRENT</span>}</div><p class="experience-company">{role.company}</p><ul>{role.highlights.map((highlight) => <li>{highlight}</li>)}</ul></div></article>)}</div>
+    </section>
+    <section class="section-band mx-auto max-w-6xl px-6" aria-labelledby="endorsements-heading">
+      <div class="section-intro"><p class="eyebrow">02 / ENDORSEMENTS</p><h2 id="endorsements-heading">Feedback from collaborators.</h2><p>Professional references that speak to architecture, collaboration, and engineering leadership.</p></div>
+      <div class="testimonials-grid">{testimonials.map((testimonial) => <article class="testimonial-card"><div class="testimonial-quote">&quot;{testimonial.quote}&quot;</div><div class="testimonial-author"><div class="testimonial-name">{testimonial.name}</div><div class="testimonial-title">{testimonial.title}</div><div class="testimonial-location">{testimonial.location}</div></div></article>)}</div>
+    </section>
+  </main>
+</Layout>

@@ -1,0 +1,32 @@
+---
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout title="Architecture & Philosophy | Calileus" description="Software architecture for safety-critical C++ systems, event-driven pipelines, and scalable quality practices." path="/architecture">
+  <main>
+    <section class="page-intro mx-auto max-w-6xl px-6 py-24" aria-labelledby="architecture-heading">
+      <p class="eyebrow">ARCHITECTURE & PHILOSOPHY</p>
+      <h1 id="architecture-heading">Systems that stay understandable under pressure.</h1>
+      <p>My architecture practice connects dependable C++ design with delivery systems that make quality repeatable across a growing team.</p>
+    </section>
+
+    <section class="section-band mx-auto max-w-6xl px-6" aria-labelledby="capabilities-heading">
+      <div class="section-intro"><p class="eyebrow">01 / SYSTEM CAPABILITIES</p><h2 id="capabilities-heading">Clear boundaries, deliberate flow.</h2><p>Architecture is the operating model that lets engineers make correct local decisions.</p></div>
+      <div class="capability-grid">
+        <article class="capability-card"><span class="capability-number">01</span><h3>Component architecture</h3><p>Explicit component boundaries, protobuf interfaces, cross-platform decomposition, and APIs designed around stable responsibilities.</p><div class="tag-row"><span>C++20</span><span>Protobuf</span><span>Linux / Windows</span></div></article>
+        <article class="capability-card"><span class="capability-number">02</span><h3>Event-driven pipelines</h3><p>Object-processing flows for detection lists, tracking, classification, and customer object-list generation, with simulation integration where it supports validation.</p><div class="tag-row"><span>Event-driven</span><span>FMI</span><span>Sensor processing</span></div></article>
+        <article class="capability-card"><span class="capability-number">03</span><h3>Safety-critical systems</h3><p>Automotive software architecture shaped by MISRA C/C++, static analysis, review discipline, and the need for dependable behavior.</p><div class="tag-row"><span>MISRA C/C++</span><span>Static analysis</span><span>ADAS</span></div></article>
+      </div>
+    </section>
+
+    <section class="section-band mx-auto max-w-6xl px-6" aria-labelledby="philosophy-heading">
+      <div class="section-intro"><p class="eyebrow">02 / ENGINEERING PHILOSOPHY</p><h2 id="philosophy-heading">Architecture is a team multiplier.</h2><p>A design succeeds when it improves the next engineer’s ability to understand, change, and validate the system.</p></div>
+      <div class="philosophy-panel"><p>Dependable software is built by systems, not isolated individual effort. The architecture should make the right path apparent and protect the team from avoidable uncertainty.</p><ul class="philosophy-list"><li><strong>Clarity</strong> — Explicit design decisions, minimal coupling, and living documentation make change safer than cleverness does.</li><li><strong>Testability</strong> — Clear boundaries and single responsibilities make components independently verifiable and let quality scale.</li><li><strong>Team scalability</strong> — Consistent governance, review standards, and automated controls reduce friction as contributors and components grow.</li></ul><p>In automotive systems, these practices support the rigor expected of software whose dependability matters beyond the development environment.</p></div>
+    </section>
+
+    <section class="section-band mx-auto max-w-6xl px-6" aria-labelledby="quality-heading">
+      <div class="section-intro"><p class="eyebrow">03 / QUALITY AS A SYSTEM</p><h2 id="quality-heading">Quality gates that preserve engineering focus.</h2><p>Automation turns shared standards into an everyday property of delivery.</p></div>
+      <div class="capability-grid"><article class="capability-card"><h3>Automated verification</h3><p>Build validation, testing, formatting, and release controls run as GitHub Actions workflows across components.</p></article><article class="capability-card"><h3>Review governance</h3><p>Repository standards and review expectations make technical decisions visible, consistent, and easier to maintain.</p></article><article class="capability-card"><h3>Release discipline</h3><p>Branching, versioning, cross-platform builds, and release processes provide a stable path from implementation to integration.</p></article></div>
+    </section>
+  </main>
+</Layout>

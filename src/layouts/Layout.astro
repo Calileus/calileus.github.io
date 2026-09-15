@@ -1,9 +1,21 @@
 ---
 import "../styles/global.css";
+import Footer from "../components/Footer.astro";
+import Header from "../components/Header.astro";
 
-const { title } = Astro.props;
+interface Props {
+  title: string;
+  description?: string;
+  path?: string;
+}
+
+const {
+  title,
+  description = "Calileus - Software Architect & Lead Developer. Modern C++, Linux, distributed systems, CI/CD, software quality, engineering excellence.",
+  path = Astro.url.pathname,
+} = Astro.props;
 const siteUrl = "https://calileus.github.io";
-const description = "Calileus - Software Architect & Lead Developer. Modern C++, Linux, distributed systems, CI/CD, software quality, engineering excellence.";
+const canonicalUrl = new URL(path, siteUrl).href;
 ---
 
 <!doctype html>
@@ -35,14 +47,15 @@ const description = "Calileus - Software Architect & Lead Developer. Modern C++,
     
     <!-- Open Graph / Social -->
     <meta property="og:type" content="website" />
-    <meta property="og:url" content={`${siteUrl}${import.meta.env.BASE_URL}`} />
-    <meta property="og:title" content="Calileus | Software Architect & Lead Developer" />
+    <link rel="canonical" href={canonicalUrl} />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:image" content={`${siteUrl}${import.meta.env.BASE_URL}og-image.svg`} />
     
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:url" content={`${siteUrl}${import.meta.env.BASE_URL}`} />
+    <meta name="twitter:url" content={canonicalUrl} />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={`${siteUrl}${import.meta.env.BASE_URL}og-image.svg`} />
@@ -83,7 +96,9 @@ const description = "Calileus - Software Architect & Lead Developer. Modern C++,
     </style>
   </head>
   <body class="antialiased">
+    <Header currentPath={path} />
     <slot />
+    <Footer />
 
     <script is:inline>
       (() => {
