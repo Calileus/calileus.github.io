@@ -4,15 +4,15 @@ import { featuredRepositories, projects } from "../data/portfolio";
 import { repositoryFeedConfig } from "../data/repositories";
 ---
 
-<Layout title="Projects & Code | Calileus" description="Open-source C++ systems, repository standards, and active public engineering work by Calileus." path="/projects">
+<Layout title="Projects | Calileus" description="Open-source C++ projects by Calileus." path="/projects">
   <main>
-    <section class="page-intro mx-auto max-w-6xl px-6 py-24" aria-labelledby="projects-heading"><p class="eyebrow">PROJECTS & CODE</p><h1 id="projects-heading">Public proof of engineering practice.</h1><p>Open-source work that makes architecture, quality controls, and cross-platform delivery practices inspectable.</p></section>
+    <section class="page-intro mx-auto max-w-6xl px-6 py-24" aria-labelledby="projects-heading"><p class="eyebrow">PROJECTS</p><h1 id="projects-heading">A few things I have built.</h1><p>Small open-source projects in C++ and related tools.</p></section>
     <section class="section-band mx-auto max-w-6xl px-6" aria-labelledby="featured-heading">
-      <div class="section-intro"><p class="eyebrow">01 / FEATURED WORK</p><h2 id="featured-heading">Systems with room for deeper case studies.</h2><p>Case studies are being developed from the design and delivery materials behind each project.</p></div>
-      <div class="project-grid">{projects.map((project) => <article class="project-card"><div class="project-top"><span class="project-type">{project.type}</span><a href={project.url} target="_blank" rel="noopener noreferrer" aria-label={`Open ${project.name} repository`}>↗</a></div><h3>{project.name}</h3><p>{project.summary}</p><div class="tag-row">{project.focus.map((item) => <span>{item}</span>)}</div><p class="project-status">Case study in progress</p></article>)}</div>
+      <div class="section-intro"><p class="eyebrow">01 / FEATURED</p><h2 id="featured-heading">Projects worth a closer look.</h2><p>Each repository shows how I like to structure and test code.</p></div>
+      <div class="project-grid">{projects.map((project) => <article class:list={["project-card", { "project-card--visual": project.image }]}>{project.image && <img class="project-card__image" src={project.image} alt={project.imageAlt} loading="lazy" />}<div class="project-top"><span class="project-type">{project.type}</span><a href={project.url} target="_blank" rel="noopener noreferrer" aria-label={`Open ${project.name} repository`}>↗</a></div><h3>{project.name}</h3><p>{project.summary}</p><div class="tag-row">{project.focus.map((item) => <span>{item}</span>)}</div><p class="project-status">Case study in progress</p></article>)}</div>
     </section>
     <section class="section-band mx-auto max-w-6xl px-6" aria-labelledby="repositories-heading">
-      <div class="section-intro"><p class="eyebrow">02 / LIVE REPOSITORIES</p><h2 id="repositories-heading">Recent relevant public work.</h2><p>A filtered feed of active repositories, prioritizing C++, C, and CMake work.</p></div>
+      <div class="section-intro"><p class="eyebrow">02 / MORE CODE</p><h2 id="repositories-heading">Other public repositories.</h2><p>Recently updated C++, C, and CMake projects.</p></div>
       <div class="live-repo-panel"><div class="live-repo-header"><h3>Repositories</h3><span id="repo-meta" aria-live="polite">Loading repositories</span></div><div id="repo-grid" class="live-repo-grid" aria-live="polite"></div></div>
     </section>
   </main>

@@ -1,23 +1,27 @@
 export const metrics = [
-  { value: "60%", description: "review effort reduction through automated GitHub Actions quality workflows" },
-  { value: "58+", description: "releases delivered, including 12 customer-facing production releases" },
-  { value: "99%", description: "first-pass execution success, improved from 20%" },
-  { value: "14", description: "multidisciplinary engineers led through delivery" },
+  { value: "60%", description: "less review work after automating checks" },
+  { value: "58+", description: "releases delivered" },
+  { value: "99%", description: "first-pass test success, up from 20%" },
+  { value: "14", description: "engineers on the team" },
 ];
 
 export const projects = [
   {
     name: "ohc-template-repo",
-    type: "Engineering template",
+    type: "C++ template",
     url: "https://github.com/ObsidianHonorCoders/ohc-template-repo",
-    summary: "A reusable C++ foundation with Dev Containers, CMake, GoogleTest, GitHub Actions, automated code-quality controls, documentation tooling, and cross-platform CI/CD.",
+    image: "/jaguar_profile.jpg",
+    imageAlt: "Obsidian Honor Coders jaguar and Charmander programming together",
+    summary: "A starter C++ repository with CMake, GoogleTest, Dev Containers, and GitHub Actions.",
     focus: ["CMake", "GoogleTest", "GitHub Actions", "Cross-platform CI/CD"],
   },
   {
     name: "inheritance-chess",
-    type: "C++20 system",
+    type: "C++20 chess engine",
     url: "https://github.com/ObsidianHonorCoders/inheritance-chess",
-    summary: "A modular chess engine exploring polymorphic object-oriented design, component-based architecture, event-driven systems, and cross-platform testing.",
+    image: undefined,
+    imageAlt: undefined,
+    summary: "A chess engine built to explore C++20 design, events, and testing.",
     focus: ["C++20", "Polymorphism", "Event-driven design", "Testing"],
   },
 ];
@@ -50,12 +54,12 @@ export const experience = [
     company: "AUMOVIO / Continental Autonomous Mobility",
     current: true,
     highlights: [
-      "Sole Software Architect for a greenfield Automotive Radar Logic Model; led a 14-person multidisciplinary team through quotation, planning, architecture, implementation, validation, customer integration, and North American production deployment.",
-      "Architected an object-processing pipeline for detection-list processing, tracking, classification, and customer object-list generation with protobuf interfaces and FMI simulation integration.",
-      "Designed and deployed 10+ GitHub Actions workflows across 8 components, adopted by 25+ contributors, reducing review effort by 60%.",
-      "Automated quality gates for MISRA C/C++, clang-format, and repository standards, improving first-pass execution success from 20% to nearly 100%.",
-      "Defined cross-platform Windows/Linux architecture, branching, versioning, release process, and repository governance standards.",
-      "Onboarded 17 contributors and mentored 3 junior developers to mid-level competency while serving as primary technical reviewer.",
+      "Led a 14-person team building automotive radar software from the first design to production.",
+      "Designed the pipeline that processes radar detections, tracks objects, and sends results to customers.",
+      "Added more than 10 GitHub Actions workflows across 8 components, cutting review work by 60%.",
+      "Automated C++ checks and formatting, raising first-pass test success from 20% to nearly 100%.",
+      "Set up the Windows and Linux build, release, and versioning process.",
+      "Welcomed 17 contributors and mentored 3 junior developers.",
     ],
   },
   {
@@ -64,9 +68,9 @@ export const experience = [
     company: "Polytechnic University of Querétaro / Autonomous University of Querétaro",
     current: false,
     highlights: [
-      "Taught C/C++ programming, linear algebra, differential equations, vector calculus, and formal logic to more than 100 students.",
-      "Developed automated grading and contest-management software for large-scale assessment.",
-      "Served as Academic Manager for the Mexican Logic Olympiad, preparing examination content and standards for national competition.",
+      "Taught C/C++, mathematics, and formal logic to more than 100 students.",
+      "Built software for automatic grading and contest management.",
+      "Managed exams and content for the Mexican Logic Olympiad.",
     ],
   },
   {
@@ -75,8 +79,8 @@ export const experience = [
     company: "REXAM | IMPULSE TELECOM | Sancorzep Group | REGULES",
     current: false,
     highlights: [
-      "Delivered enterprise inventory-management and operational-support systems using SQL, C++, and WinAPI technologies.",
-      "Managed complete delivery from requirements through design, implementation, deployment, user training, and maintenance.",
+      "Built inventory and operations software with SQL, C++, and WinAPI.",
+      "Handled projects from requirements to deployment, training, and maintenance.",
     ],
   },
 ];

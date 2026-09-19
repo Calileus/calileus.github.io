@@ -8,18 +8,18 @@ import { metrics, projects, testimonials } from "../data/portfolio";
     <section class="hero-section mx-auto max-w-6xl px-6" aria-labelledby="hero-heading">
       <div class="hero-grid-pattern" aria-hidden="true"></div>
       <div class="hero-copy">
-        <p class="eyebrow"><span class="status-dot"></span> Software Architect & Lead Developer</p>
-        <h1 id="hero-heading">Dependable <span class="gradient-text">C++ systems</span> for complex products.</h1>
-        <p class="hero-lede">Architecture leadership for safety-critical software, event-driven pipelines, and quality systems that help teams deliver with confidence.</p>
+        <p class="eyebrow"><span class="status-dot"></span> C++ Software Architect</p>
+        <h1 id="hero-heading">I build <span class="gradient-text">C++ software</span> that teams can trust.</h1>
+        <p class="hero-lede">I design systems, improve the way teams build software, and enjoy making difficult code easier to understand.</p>
         <div class="mt-9 flex flex-wrap items-center gap-4">
-          <a href="/experience" class="btn-primary">Explore experience <span aria-hidden="true">↓</span></a>
-          <a href="https://www.linkedin.com/in/calileus" target="_blank" rel="noopener noreferrer" class="btn-secondary">Get in touch <span aria-hidden="true">↗</span></a>
+          <a href="/experience" class="btn-primary">See my experience <span aria-hidden="true">↓</span></a>
+          <a href="https://www.linkedin.com/in/calileus" target="_blank" rel="noopener noreferrer" class="btn-secondary">Contact me <span aria-hidden="true">↗</span></a>
         </div>
         <div class="hero-meta"><span class="meta-divider"></span><span>M.Sc. Mathematics · Querétaro, Mexico</span><span class="meta-divider"></span></div>
       </div>
       <aside class="hero-visual" aria-label="Calileus engineering identity">
         <div class="hero-visual__frame">
-          <img src="/profile.jpg" alt="Calileus illustrated engineering identity" />
+          <img src="/chibi_modern_profile_pic.png" alt="Illustrated portrait of Calileus programming with a Charmander companion" />
           <div class="hero-visual__scanline" aria-hidden="true"></div>
           <div class="hero-visual__label hero-visual__label--top">ARCHITECTING STABLE FUTURE</div>
           <div class="hero-visual__label hero-visual__label--bottom"><span class="status-dot"></span>CALILEUS LAB</div>
@@ -29,28 +29,28 @@ import { metrics, projects, testimonials } from "../data/portfolio";
     </section>
 
     <section class="section-band mx-auto max-w-6xl px-6" aria-labelledby="impact-heading">
-      <div class="section-intro"><p class="eyebrow">01 / OUTCOMES</p><h2 id="impact-heading">Engineering judgment, measured.</h2><p>Evidence of delivery practice, quality ownership, and team leadership.</p></div>
+      <div class="section-intro"><p class="eyebrow">01 / AT A GLANCE</p><h2 id="impact-heading">A few useful numbers.</h2><p>Results from recent work.</p></div>
       <div class="impact-grid">
         {metrics.map((metric, index) => <div class:list={["impact-item", { "impact-item--featured": index === 0 }]}><strong>{metric.value}</strong><span>{metric.description}</span></div>)}
       </div>
     </section>
 
     <section class="section-band mx-auto max-w-6xl px-6" aria-labelledby="projects-heading">
-      <div class="section-intro"><p class="eyebrow">02 / SELECTED WORK</p><h2 id="projects-heading">Public evidence of engineering standards.</h2><p>Two open-source systems that reflect the architecture and delivery practices applied in production.</p><a href="/projects" class="project-link">View projects and code <span aria-hidden="true">→</span></a></div>
+      <div class="section-intro"><p class="eyebrow">02 / PROJECTS</p><h2 id="projects-heading">Some things I have built.</h2><p>Open-source C++ projects and tools.</p><a href="/projects" class="project-link">View all projects <span aria-hidden="true">→</span></a></div>
       <div class="project-grid">
         {projects.map((project) => <article class="project-card"><div class="project-top"><span class="project-type">{project.type}</span><a href={project.url} target="_blank" rel="noopener noreferrer" aria-label={`Open ${project.name} repository`}>↗</a></div><h3>{project.name}</h3><p>{project.summary}</p><a href="/projects" class="project-link">View project details</a></article>)}
       </div>
     </section>
 
     <section class="section-band mx-auto max-w-6xl px-6" aria-labelledby="testimonials-heading">
-      <div class="section-intro"><p class="eyebrow">03 / ENDORSEMENTS</p><h2 id="testimonials-heading">Trusted by collaborators.</h2><p>Short excerpts from engineering peers and leaders.</p><a href="/experience" class="project-link">Read experience and endorsements <span aria-hidden="true">→</span></a></div>
+      <div class="section-intro"><p class="eyebrow">03 / WHAT PEOPLE SAY</p><h2 id="testimonials-heading">A few words from colleagues.</h2><p>Feedback from people I have worked with.</p><a href="/experience" class="project-link">See my experience <span aria-hidden="true">→</span></a></div>
       <div class="testimonials-grid">
         {testimonials.slice(0, 2).map((testimonial) => <article class="testimonial-card"><div class="testimonial-quote">&quot;{testimonial.quote}&quot;</div><div class="testimonial-author"><div class="testimonial-name">{testimonial.name}</div><div class="testimonial-title">{testimonial.title}</div><div class="testimonial-location">{testimonial.location}</div></div></article>)}
       </div>
     </section>
 
     <section class="closing-section mx-auto max-w-6xl px-6" aria-labelledby="contact-heading">
-      <div class="closing-panel"><p class="eyebrow">04 / CONTACT</p><h2 id="contact-heading">Good systems start with a good conversation.</h2><p>For architecture leadership, modern C++, or engineering excellence, I would be glad to compare notes.</p><div class="mt-8 flex flex-wrap gap-4"><a href="https://www.linkedin.com/in/calileus" target="_blank" rel="noopener noreferrer" class="btn-primary">LinkedIn <span aria-hidden="true">↗</span></a><a href="https://github.com/Calileus" target="_blank" rel="noopener noreferrer" class="btn-secondary">GitHub <span aria-hidden="true">↗</span></a></div></div>
+      <div class="closing-panel"><p class="eyebrow">04 / CONTACT</p><h2 id="contact-heading">Let's talk about software.</h2><p>Find me on LinkedIn or browse my code on GitHub.</p><div class="mt-8 flex flex-wrap gap-4"><a href="https://www.linkedin.com/in/calileus" target="_blank" rel="noopener noreferrer" class="btn-primary">LinkedIn <span aria-hidden="true">↗</span></a><a href="https://github.com/Calileus" target="_blank" rel="noopener noreferrer" class="btn-secondary">GitHub <span aria-hidden="true">↗</span></a></div></div>
     </section>
   </main>
 </Layout>

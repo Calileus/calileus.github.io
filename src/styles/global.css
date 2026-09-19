@@ -255,6 +255,26 @@
         @apply mt-7 max-w-2xl text-lg leading-relaxed text-neutral-400;
     }
 
+    .page-intro--profile {
+        @apply grid items-center gap-12 md:grid-cols-[1fr_15rem];
+    }
+
+    .page-intro--profile > div > p:last-child {
+        @apply mt-7 max-w-2xl text-lg leading-relaxed text-neutral-400;
+    }
+
+    .profile-portrait {
+        @apply w-full max-w-60 justify-self-center md:justify-self-end;
+    }
+
+    .profile-portrait img {
+        @apply aspect-square w-full border border-emerald-500/30 object-cover grayscale;
+    }
+
+    .profile-portrait figcaption {
+        @apply mt-3 border-t border-neutral-800 pt-3 font-mono text-[10px] uppercase tracking-wider text-neutral-500;
+    }
+
     .hero-grid-pattern {
         @apply pointer-events-none absolute inset-0 -z-10 opacity-70;
         background-image: linear-gradient(rgba(16, 185, 129, 0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(16, 185, 129, 0.06) 1px, transparent 1px);
@@ -436,6 +456,22 @@
     .capability-card p,
     .project-card p {
         @apply mt-4 text-sm leading-relaxed text-neutral-400;
+    }
+
+    .project-card--visual {
+        @apply overflow-hidden p-0;
+    }
+
+    .project-card--visual > :not(.project-card__image) {
+        @apply mx-6;
+    }
+
+    .project-card--visual > :last-child {
+        @apply mb-6;
+    }
+
+    .project-card__image {
+        @apply aspect-[16/9] w-full border-b border-neutral-800 object-cover;
     }
 
     .tag-row {
