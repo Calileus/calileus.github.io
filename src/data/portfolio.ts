@@ -1,8 +1,8 @@
 export const metrics = [
-  { value: "60%", description: "less review work after automating checks" },
-  { value: "58+", description: "releases delivered" },
-  { value: "99%", description: "first-pass test success, up from 20%" },
-  { value: "14", description: "engineers on the team" },
+  { value: "10+", description: "years of C++ engineering experience" },
+  { value: "14", description: "engineers led on automotive radar team" },
+  { value: "5+", description: "major repos architected & refactored" },
+  { value: "20+", description: "private projects built & shipped" },
 ];
 
 export const projects = [
