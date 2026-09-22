@@ -1,6 +1,6 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import { metrics, projects, testimonials } from "../data/portfolio";
+import { metrics } from "../data/portfolio";
 ---
 
 <Layout title="Calileus | Software Architect & Lead Developer" path="/">
@@ -12,10 +12,11 @@ import { metrics, projects, testimonials } from "../data/portfolio";
         <h1 id="hero-heading">I build <span class="gradient-text">C++ software</span> that teams can trust.</h1>
         <p class="hero-lede">I design systems, improve the way teams build software, and enjoy making difficult code easier to understand.</p>
         <div class="mt-9 flex flex-wrap items-center gap-4">
-          <a href="/experience" class="btn-primary">See my experience <span aria-hidden="true">↓</span></a>
-          <a href="https://www.linkedin.com/in/calileus" target="_blank" rel="noopener noreferrer" class="btn-secondary">Contact me <span aria-hidden="true">↗</span></a>
+          <a href="/experience" class="btn-primary">Experience <span aria-hidden="true">↓</span></a>
+          <a href="/projects" class="btn-secondary">Projects <span aria-hidden="true">→</span></a>
+          <a href="/architecture" class="btn-secondary">Architecture <span aria-hidden="true">→</span></a>
+          <a href="/credentials" class="btn-secondary">Credentials <span aria-hidden="true">→</span></a>
         </div>
-        <a href="/architecture" class="project-link">How I work <span aria-hidden="true">→</span></a>
         <div class="hero-meta"><span class="meta-divider"></span><span>M.Sc. Mathematics · Querétaro, Mexico</span><span class="meta-divider"></span></div>
       </div>
       <aside class="hero-visual" aria-label="Calileus engineering identity">
@@ -36,22 +37,30 @@ import { metrics, projects, testimonials } from "../data/portfolio";
       </div>
     </section>
 
-    <section class="section-band mx-auto max-w-6xl px-6" aria-labelledby="projects-heading">
-      <div class="section-intro"><p class="eyebrow">02 / PROJECTS</p><h2 id="projects-heading">Some things I have built.</h2><p>Open-source C++ projects and tools.</p><a href="/projects" class="project-link">View all projects <span aria-hidden="true">→</span></a></div>
-      <div class="project-grid">
-        {projects.map((project) => <article class="project-card"><div class="project-top"><span class="project-type">{project.type}</span><a href={project.url} target="_blank" rel="noopener noreferrer" aria-label={`Open ${project.name} repository`}>↗</a></div><h3>{project.name}</h3><p>{project.summary}</p><a href={`/projects#${project.name}`} class="project-link">View project details <span aria-hidden="true">→</span></a></article>)}
-      </div>
-    </section>
-
-    <section class="section-band mx-auto max-w-6xl px-6" aria-labelledby="testimonials-heading">
-      <div class="section-intro"><p class="eyebrow">03 / WHAT PEOPLE SAY</p><h2 id="testimonials-heading">A few words from colleagues.</h2><p>Feedback from people I have worked with.</p><a href="/experience" class="project-link">See my experience <span aria-hidden="true">→</span></a></div>
-      <div class="testimonials-grid">
-        {testimonials.slice(0, 2).map((testimonial) => <article class="testimonial-card"><div class="testimonial-quote">&quot;{testimonial.quote}&quot;</div><div class="testimonial-author"><div class="testimonial-name">{testimonial.name}</div><div class="testimonial-title">{testimonial.title}</div><div class="testimonial-location">{testimonial.location}</div></div></article>)}
-      </div>
+    <section class="section-band mx-auto max-w-6xl px-6" aria-labelledby="nav-heading">
+      <div class="section-intro"><p class="eyebrow">02 / EXPLORE</p><h2 id="nav-heading">Jump to a section.</h2></div>
+      <nav class="nav-grid" aria-label="Main navigation">
+        <a href="/experience" class="nav-card">
+          <h3>Experience</h3>
+          <p>14-person team, automotive radar, CI/CD, mentoring</p>
+        </a>
+        <a href="/projects" class="nav-card">
+          <h3>Projects</h3>
+          <p>Open-source C++ engines, templates, tools</p>
+        </a>
+        <a href="/architecture" class="nav-card">
+          <h3>Architecture</h3>
+          <p>Design principles, patterns, and decision records</p>
+        </a>
+        <a href="/credentials" class="nav-card">
+          <h3>Credentials</h3>
+          <p>AI, security, parallel computing, language certs</p>
+        </a>
+      </nav>
     </section>
 
     <section class="closing-section mx-auto max-w-6xl px-6" aria-labelledby="contact-heading">
-      <div class="closing-panel"><p class="eyebrow">04 / CONTACT</p><h2 id="contact-heading">Let's talk about software.</h2><p>Find me on LinkedIn or browse my code on GitHub.</p><div class="mt-8 flex flex-wrap gap-4"><a href="https://www.linkedin.com/in/calileus" target="_blank" rel="noopener noreferrer" class="btn-primary">LinkedIn <span aria-hidden="true">↗</span></a><a href="https://github.com/Calileus" target="_blank" rel="noopener noreferrer" class="btn-secondary">GitHub <span aria-hidden="true">↗</span></a></div></div>
+      <div class="closing-panel"><p class="eyebrow">03 / CONNECT</p><h2 id="contact-heading">Let's talk software.</h2><div class="mt-6 flex flex-wrap gap-4"><a href="https://www.linkedin.com/in/calileus" target="_blank" rel="noopener noreferrer" class="btn-primary">LinkedIn <span aria-hidden="true">↗</span></a><a href="https://github.com/Calileus" target="_blank" rel="noopener noreferrer" class="btn-secondary">GitHub <span aria-hidden="true">↗</span></a></div></div>
     </section>
   </main>
 </Layout>

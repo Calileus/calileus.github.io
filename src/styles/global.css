@@ -251,7 +251,7 @@
         @apply max-w-4xl text-5xl font-bold leading-[1.03] tracking-tight text-white md:text-6xl;
     }
 
-    .page-intro > p:last-child {
+    .page-intro>p:last-child {
         @apply mt-7 max-w-2xl text-lg leading-relaxed text-neutral-400;
     }
 
@@ -259,7 +259,7 @@
         @apply grid items-center gap-12 md:grid-cols-[1fr_15rem];
     }
 
-    .page-intro--profile > div > p:last-child {
+    .page-intro--profile>div>p:last-child {
         @apply mt-7 max-w-2xl text-lg leading-relaxed text-neutral-400;
     }
 
@@ -438,6 +438,22 @@
         @apply grid gap-4 md:grid-cols-3;
     }
 
+    .nav-grid {
+        @apply grid gap-4 md:grid-cols-4;
+    }
+
+    .nav-card {
+        @apply rounded-2xl border border-neutral-800 bg-neutral-900/60 p-6 hover:border-emerald-500/40 hover:bg-neutral-900 transition-all duration-300;
+    }
+
+    .nav-card h3 {
+        @apply text-xl font-semibold text-white mb-2;
+    }
+
+    .nav-card p {
+        @apply text-sm leading-relaxed text-neutral-400;
+    }
+
     .capability-card,
     .project-card {
         @apply rounded-2xl border border-neutral-800 bg-neutral-900/60 p-6 transition-all duration-300 hover:-translate-y-1 hover:border-emerald-500/40 hover:bg-neutral-900;
@@ -462,11 +478,11 @@
         @apply overflow-hidden p-0;
     }
 
-    .project-card--visual > :not(.project-card__image) {
+    .project-card--visual> :not(.project-card__image) {
         @apply mx-6;
     }
 
-    .project-card--visual > :last-child {
+    .project-card--visual> :last-child {
         @apply mb-6;
     }
 
@@ -800,8 +816,8 @@
         color: rgb(var(--text-muted));
     }
 
-    html[data-theme="light"] .page-intro > p:last-child,
-    html[data-theme="dark"] .page-intro > p:last-child,
+    html[data-theme="light"] .page-intro>p:last-child,
+    html[data-theme="dark"] .page-intro>p:last-child,
     html[data-theme="light"] .project-status,
     html[data-theme="dark"] .project-status {
         color: rgb(var(--text-muted));
