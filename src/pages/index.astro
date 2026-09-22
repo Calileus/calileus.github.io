@@ -15,6 +15,7 @@ import { metrics, projects, testimonials } from "../data/portfolio";
           <a href="/experience" class="btn-primary">See my experience <span aria-hidden="true">↓</span></a>
           <a href="https://www.linkedin.com/in/calileus" target="_blank" rel="noopener noreferrer" class="btn-secondary">Contact me <span aria-hidden="true">↗</span></a>
         </div>
+        <a href="/architecture" class="project-link">How I work <span aria-hidden="true">→</span></a>
         <div class="hero-meta"><span class="meta-divider"></span><span>M.Sc. Mathematics · Querétaro, Mexico</span><span class="meta-divider"></span></div>
       </div>
       <aside class="hero-visual" aria-label="Calileus engineering identity">
@@ -38,7 +39,7 @@ import { metrics, projects, testimonials } from "../data/portfolio";
     <section class="section-band mx-auto max-w-6xl px-6" aria-labelledby="projects-heading">
       <div class="section-intro"><p class="eyebrow">02 / PROJECTS</p><h2 id="projects-heading">Some things I have built.</h2><p>Open-source C++ projects and tools.</p><a href="/projects" class="project-link">View all projects <span aria-hidden="true">→</span></a></div>
       <div class="project-grid">
-        {projects.map((project) => <article class="project-card"><div class="project-top"><span class="project-type">{project.type}</span><a href={project.url} target="_blank" rel="noopener noreferrer" aria-label={`Open ${project.name} repository`}>↗</a></div><h3>{project.name}</h3><p>{project.summary}</p><a href="/projects" class="project-link">View project details</a></article>)}
+        {projects.map((project) => <article class="project-card"><div class="project-top"><span class="project-type">{project.type}</span><a href={project.url} target="_blank" rel="noopener noreferrer" aria-label={`Open ${project.name} repository`}>↗</a></div><h3>{project.name}</h3><p>{project.summary}</p><a href={`/projects#${project.name}`} class="project-link">View project details <span aria-hidden="true">→</span></a></article>)}
       </div>
     </section>
 
