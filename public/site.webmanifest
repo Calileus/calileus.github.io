@@ -1,8 +1,8 @@
 {
-    "name": "Calileus - Software Architect & Lead Developer",
+    "name": "Calileus - Software Architect",
     "short_name": "Calileus",
-    "description": "Software Architect & Lead Developer specializing in Modern C++, Linux, Distributed Systems, CI/CD, and Software Quality.",
-    "start_url": "/Calileus/",
+    "description": "Software architect and hands-on engineer working on C++ systems and automotive perception software.",
+    "start_url": "/",
     "display": "standalone",
     "background_color": "#022c22",
     "theme_color": "#064e3b",

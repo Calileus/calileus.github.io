@@ -1,8 +1,8 @@
 export const metrics = [
   { value: "10+", description: "years of C++ engineering experience" },
-  { value: "14", description: "engineers led on automotive radar team" },
-  { value: "5+", description: "major repos architected & refactored" },
-  { value: "20+", description: "private projects built & shipped" },
+  { value: "14", description: "people on an automotive radar team I led" },
+  { value: "58+", description: "production releases shipped" },
+  { value: "3", description: "junior engineers mentored" },
 ];
 
 export const projects = [
@@ -23,6 +23,27 @@ export const projects = [
     imageAlt: "Inheritance Chess logo - a chess piece with inheritance arrows",
     summary: "A chess engine built to explore C++20 design, events, and testing.",
     focus: ["C++20", "Polymorphism", "Event-driven design", "Testing"],
+  },
+];
+
+export const contributions = [
+  {
+    name: "F3D",
+    category: "Merged contribution",
+    status: "Merged",
+    repositoryUrl: "https://github.com/f3d-app/f3d",
+    pullRequestUrl: "https://github.com/f3d-app/f3d/pull/3610",
+    summary: "Corrected spelling, grammar, and phrasing in comments across CMake files. The change was documentation-only.",
+    focus: ["CMake", "Open source", "Documentation"],
+  },
+  {
+    name: "ASAM OpenSimulationInterface",
+    category: "Documentation contribution",
+    status: "Awaiting CCB",
+    repositoryUrl: "https://github.com/OpenSimulationInterface/open-simulation-interface",
+    pullRequestUrl: "https://github.com/OpenSimulationInterface/open-simulation-interface/pull/916",
+    summary: "Corrects minor grammatical errors in protobuf comments. As of November 2026, a maintainer has approved the change; final CCB review and merge are pending.",
+    focus: ["C++ ecosystem", "Protobuf", "Documentation"],
   },
 ];
 

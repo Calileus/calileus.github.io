@@ -1,19 +1,38 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import { featuredRepositories, projects } from "../data/portfolio";
+import { contributions, featuredRepositories, projects } from "../data/portfolio";
 import { repositoryFeedConfig } from "../data/repositories";
 ---
 
-<Layout title="Projects | Calileus" description="Open-source C++ projects by Calileus." path="/projects">
+<Layout title="Selected Work | Calileus" description="Open-source contributions and collaborative software projects by Calileus." path="/projects">
   <main>
-    <section class="page-intro mx-auto max-w-6xl px-6 py-24" aria-labelledby="projects-heading"><p class="eyebrow">PROJECTS</p><h1 id="projects-heading">Open-source C++ projects and engineering tools.</h1><p>Small open-source projects in C++ and related tools.</p></section>
+    <section class="page-intro mx-auto max-w-6xl px-6 py-24" aria-labelledby="projects-heading"><p class="eyebrow">SELECTED WORK</p><h1 id="projects-heading">A few things I have helped build.</h1><p>Upstream contributions and collaborative projects, with the scope of my role made clear.</p></section>
+    <section class="section-band mx-auto max-w-6xl px-6" aria-labelledby="contributions-heading">
+      <div class="section-intro"><p class="eyebrow">01 / UPSTREAM CONTRIBUTIONS</p><h2 id="contributions-heading">Small changes matter too.</h2><p>These contributions are modest in scope, and linked directly to their review history.</p></div>
+      <div class="grid gap-4 md:grid-cols-2">{contributions.map((contribution) => <article class="project-card"><div class="project-top"><span class="project-type">{contribution.category}</span><span class="project-status">{contribution.status}</span></div><h3><a href={contribution.repositoryUrl} target="_blank" rel="noopener noreferrer">{contribution.name} <span aria-hidden="true">↗</span></a></h3><p>{contribution.summary}</p><div class="tag-row">{contribution.focus.map((item) => <span>{item}</span>)}</div><a class="project-link" href={contribution.pullRequestUrl} target="_blank" rel="noopener noreferrer">Review the pull request <span aria-hidden="true">↗</span></a></article>)}</div>
+    </section>
     <section class="section-band mx-auto max-w-6xl px-6" aria-labelledby="featured-heading">
-      <div class="section-intro"><p class="eyebrow">01 / FEATURED</p><h2 id="featured-heading">Projects worth a closer look.</h2><p>Each repository shows how I like to structure and test code.</p></div>
-      <div class="project-grid">{projects.map((project) => <article id={project.name} class:list={["project-card", { "project-card--visual": project.image }]}>{project.image && <img class="project-card__image" src={project.image} alt={project.imageAlt} loading="lazy" />}<div class="project-top"><span class="project-type">{project.type}</span><a href={project.url} target="_blank" rel="noopener noreferrer" aria-label={`Open ${project.name} repository`}>↗</a></div><h3>{project.name}</h3><p>{project.summary}</p><div class="tag-row">{project.focus.map((item) => <span>{item}</span>)}</div><p class="project-status">Case study in progress</p></article>)}</div>
+      <div class="section-intro"><p class="eyebrow">02 / COLLABORATIVE PROJECTS</p><h2 id="featured-heading">Projects built with other people.</h2><p>Learning through design, implementation, review, and iteration.</p></div>
+      <div class="project-grid">{projects.map((project) => <article id={project.name} class:list={["project-card", { "project-card--visual": project.image }]}>{project.image && <img class="project-card__image" src={project.image} alt={project.imageAlt} loading="lazy" />}<div class="project-top"><span class="project-type">{project.type}</span><a href={project.url} target="_blank" rel="noopener noreferrer" aria-label={`Open ${project.name} repository`}>↗</a></div><h3>{project.name}</h3><p>{project.summary}</p><div class="tag-row">{project.focus.map((item) => <span>{item}</span>)}</div><a class="project-link" href={project.url} target="_blank" rel="noopener noreferrer">View repository <span aria-hidden="true">↗</span></a></article>)}</div>
     </section>
     <section class="section-band mx-auto max-w-6xl px-6" aria-labelledby="repositories-heading">
-      <div class="section-intro"><p class="eyebrow">02 / MORE CODE</p><h2 id="repositories-heading">Other public repositories.</h2><p>Recently updated C++, C, and CMake projects.</p></div>
-      <div class="live-repo-panel"><div class="live-repo-header"><h3>Repositories</h3><span id="repo-meta" aria-live="polite">Loading repositories</span></div><div id="repo-grid" class="live-repo-grid" aria-live="polite"></div></div>
+      <div class="section-intro"><p class="eyebrow">03 / PUBLIC REPOSITORIES</p><h2 id="repositories-heading">All my public repositories.</h2><p>Repositories owned by my GitHub account and the organizations I contribute to.</p></div>
+      <div class="live-repo-panel">
+        <div class="live-repo-header">
+          <h3>Repositories</h3>
+          <div class="repo-sort-control">
+            <label for="repo-sort">Sort</label>
+            <select id="repo-sort" aria-label="Sort public repositories">
+              <option value="impact">Impact</option>
+              <option value="recent">Recently updated</option>
+              <option value="stars">Stars</option>
+              <option value="name">Name</option>
+            </select>
+          </div>
+          <span id="repo-meta" aria-live="polite">Loading repositories</span>
+        </div>
+        <div id="repo-grid" class="live-repo-grid" aria-live="polite"></div>
+      </div>
     </section>
   </main>
 
@@ -21,6 +40,9 @@ import { repositoryFeedConfig } from "../data/repositories";
     const apiBase = "https://api.github.com";
     const grid = document.getElementById("repo-grid");
     const meta = document.getElementById("repo-meta");
+    const sortControl = document.getElementById("repo-sort");
+    let repositories = [];
+    let incompleteSources = [];
 
     const escapeHtml = (value) => String(value ?? "")
       .replace(/&/g, "&amp;")
@@ -31,47 +53,80 @@ import { repositoryFeedConfig } from "../data/repositories";
 
     const formatDate = (value) => value ? new Intl.DateTimeFormat("en", { month: "short", day: "numeric", year: "numeric" }).format(new Date(value)) : "Recently";
 
-    const card = (repository) => `
-      <article class="live-repo-card">
-        <div class="live-repo-card-header"><a class="live-repo-card-title" href="${repository.url}" target="_blank" rel="noopener noreferrer">${escapeHtml(repository.name)}</a><span class="live-repo-badge">${escapeHtml(repository.language || "Featured")}</span></div>
+    const card = (repository, isFeatured) => `
+      <article class="live-repo-card${isFeatured ? " live-repo-card--featured" : ""}">
+        <div class="live-repo-card-header"><a class="live-repo-card-title" href="${repository.html_url || repository.url}" target="_blank" rel="noopener noreferrer">${escapeHtml(repository.name)}</a><div class="live-repo-badges">${isFeatured ? '<span class="live-repo-badge live-repo-badge--featured">Featured</span>' : ""}<span class="live-repo-badge">${escapeHtml(repository.language || "Other")}</span></div></div>
         <p class="live-repo-description">${escapeHtml(repository.description || "No description provided.")}</p>
-        ${repository.updatedAt ? `<div class="live-repo-metadata"><span>Updated ${formatDate(repository.updatedAt)}</span><span>Stars ${repository.stars ?? 0}</span><span>Forks ${repository.forks ?? 0}</span></div>` : ""}
+        <div class="live-repo-metadata"><span>Updated ${formatDate(repository.updated_at || repository.updatedAt)}</span><span>Stars ${repository.stargazers_count ?? repository.stars ?? 0}</span><span>Forks ${repository.forks_count ?? repository.forks ?? 0}</span>${repository.fork ? "<span>Fork</span>" : ""}${repository.archived ? "<span>Archived</span>" : ""}</div>
       </article>`;
 
-    const showFallback = () => {
+    const communityImpact = (repository) => (repository.stargazers_count || 0) + (repository.forks_count || 0);
+
+    const compareImpact = (left, right) => communityImpact(right) - communityImpact(left)
+      || new Date(right.updated_at) - new Date(left.updated_at)
+      || left.name.localeCompare(right.name);
+
+    const getComparator = (sortBy) => {
+      if (sortBy === "recent") {
+        return (left, right) => new Date(right.updated_at) - new Date(left.updated_at) || compareImpact(left, right);
+      }
+      if (sortBy === "stars") {
+        return (left, right) => right.stargazers_count - left.stargazers_count || right.forks_count - left.forks_count || compareImpact(left, right);
+      }
+      if (sortBy === "name") {
+        return (left, right) => left.name.localeCompare(right.name);
+      }
+      return compareImpact;
+    };
+
+    const showFallback = (message) => {
       if (!grid || !meta) return;
-      meta.textContent = "Featured repositories";
-      grid.innerHTML = featuredRepositories.map((repository) => card({ ...repository, language: "Featured" })).join("");
+      meta.textContent = message;
+      grid.innerHTML = featuredRepositories.map((repository) => card(repository, true)).join("");
     };
-
-    const isEligible = (repository) => {
-      const name = repository.name.toLowerCase();
-      const topics = (repository.topics || []).map((topic) => topic.toLowerCase());
-      return !repository.private && !repository.fork && !repository.archived && !name.startsWith(".")
-        && !repositoryFeedConfig.excludedNames.includes(name)
-        && !topics.some((topic) => repositoryFeedConfig.excludedTopics.includes(topic));
-    };
-
-    const score = (repository) => repositoryFeedConfig.preferredLanguages.includes(repository.language) ? 1 : 0;
 
     const fetchRepositories = async (source) => {
-      const response = await fetch(`${apiBase}/${source}?sort=updated&per_page=100`, { headers: { Accept: "application/vnd.github+json" } });
-      if (!response.ok) throw new Error("Repository source unavailable");
-      return response.json();
+      const collected = [];
+      for (let page = 1; ; page += 1) {
+        try {
+          const response = await fetch(`${apiBase}/${source.path}?type=${source.type}&sort=updated&per_page=100&page=${page}`, {
+            headers: { Accept: "application/vnd.github+json" },
+          });
+          if (!response.ok) return { repositories: collected, complete: false };
+          const batch = await response.json();
+          if (!Array.isArray(batch)) return { repositories: collected, complete: false };
+          collected.push(...batch.filter((repository) => !repository.private));
+          if (batch.length < 100) return { repositories: collected, complete: true };
+        } catch {
+          return { repositories: collected, complete: false };
+        }
+      }
+    };
+
+    const renderRepositories = () => {
+      if (!grid || !meta) return;
+      if (!repositories.length) {
+        return showFallback(incompleteSources.length ? "GitHub is unavailable; showing selected repositories" : "No public repositories found");
+      }
+
+      const featuredIds = new Set([...repositories].sort(compareImpact).slice(0, repositoryFeedConfig.featuredCount).map((repository) => repository.id));
+      const sorted = [...repositories].sort(getComparator(sortControl.value));
+      meta.textContent = `${repositories.length} public repositories${incompleteSources.length ? " · some sources could not be loaded" : ""}`;
+      grid.innerHTML = sorted.map((repository) => card(repository, featuredIds.has(repository.id))).join("");
     };
 
     const loadRepositories = async () => {
-      const sources = [`users/${repositoryFeedConfig.githubUser}/repos`, ...repositoryFeedConfig.organizations.map((organization) => `orgs/${organization}/repos`)];
-      const results = await Promise.allSettled(sources.map(fetchRepositories));
-      const repositories = results.filter((result) => result.status === "fulfilled").flatMap((result) => result.value).filter(isEligible);
-      const unique = [...new Map(repositories.map((repository) => [repository.id, repository])).values()];
-      const selected = unique.sort((left, right) => score(right) - score(left) || new Date(right.updated_at) - new Date(left.updated_at)).slice(0, repositoryFeedConfig.limit);
-      if (!selected.length) return showFallback();
-      if (!grid || !meta) return;
-      meta.textContent = `${selected.length} active repositories`;
-      grid.innerHTML = selected.map((repository) => card({ name: repository.name, url: repository.html_url, language: repository.language, description: repository.description, updatedAt: repository.updated_at, stars: repository.stargazers_count, forks: repository.forks_count })).join("");
+      const sources = [
+        { name: repositoryFeedConfig.githubUser, path: `users/${repositoryFeedConfig.githubUser}/repos`, type: "owner" },
+        ...repositoryFeedConfig.organizations.map((organization) => ({ name: organization, path: `orgs/${organization}/repos`, type: "public" })),
+      ];
+      const results = await Promise.all(sources.map(fetchRepositories));
+      incompleteSources = results.flatMap((result, index) => result.complete ? [] : [sources[index].name]);
+      repositories = [...new Map(results.flatMap((result) => result.repositories).map((repository) => [repository.id, repository])).values()];
+      renderRepositories();
     };
 
-    loadRepositories().catch(showFallback);
+    sortControl.addEventListener("change", renderRepositories);
+    loadRepositories().catch(() => showFallback("GitHub is unavailable; showing selected repositories"));
   </script>
 </Layout>

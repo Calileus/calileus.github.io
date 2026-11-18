@@ -10,8 +10,19 @@ import { experience, testimonials } from "../data/portfolio";
       <div class="section-intro"><p class="eyebrow">01 / TIMELINE</p><h2 id="timeline-heading">Where I have worked.</h2><p>Automotive software, education, and business systems.</p></div>
       <div class="experience-list">{experience.map((role) => <article class:list={["experience-item", { "experience-item--current": role.current }]}><div class="experience-date">{role.period}</div><div><div class="experience-role"><h3>{role.role}</h3>{role.current && <span class="experience-current">CURRENT</span>}</div><p class="experience-company">{role.company}</p><ul>{role.highlights.map((highlight) => <li>{highlight}</li>)}</ul></div></article>)}</div>
     </section>
+    <section class="section-band mx-auto max-w-6xl px-6" aria-labelledby="independent-work-heading">
+      <div class="section-intro"><p class="eyebrow">02 / INDEPENDENT WORK</p><h2 id="independent-work-heading">Some work stays private.</h2><p>I keep private project names and implementation details off this site. These are the broad areas and tools I have explored.</p></div>
+      <article class="philosophy-panel">
+        <ul class="philosophy-list">
+          <li><strong>Inventory and traceability</strong> — React/TypeScript interfaces, ASP.NET Core services, PostgreSQL, stock movements, and audit history.</li>
+          <li><strong>Operations and approvals</strong> — C++ HTTP services, SQLite, document workflows, and role-based access.</li>
+          <li><strong>Systems prototypes</strong> — C++ networking, TLS, local service APIs, and automated tests.</li>
+        </ul>
+        <p>These examples are personal prototypes and development work; I do not present them as deployed products.</p>
+      </article>
+    </section>
     <section class="section-band mx-auto max-w-6xl px-6" aria-labelledby="endorsements-heading">
-      <div class="section-intro"><p class="eyebrow">02 / WHAT PEOPLE SAY</p><h2 id="endorsements-heading">Feedback from colleagues.</h2><p>Words from people I have worked with.</p></div>
+      <div class="section-intro"><p class="eyebrow">03 / WHAT PEOPLE SAY</p><h2 id="endorsements-heading">Feedback from colleagues.</h2><p>Words from people I have worked with.</p></div>
       <div class="testimonials-grid">{testimonials.map((testimonial) => <article class="testimonial-card"><div class="testimonial-quote">&quot;{testimonial.quote}&quot;</div><div class="testimonial-author"><div class="testimonial-name">{testimonial.name}</div><div class="testimonial-title">{testimonial.title}</div><div class="testimonial-location">{testimonial.location}</div></div></article>)}</div>
     </section>
   </main>

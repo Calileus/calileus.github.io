@@ -1,5 +1,22 @@
-# Calileus landing page
+# Calileus Portfolio
 
-This repository contains the static landing page for Calileus.
+Static portfolio site built with Astro. It includes experience, selected work, engineering approach, and education pages. The projects page highlights upstream contributions and also loads a small set of public repositories from GitHub at runtime, with curated projects as a fallback.
 
-The page displays public GitHub repositories for the configured GitHub account and organizations, with a green-themed layout and automatic updates when the page is loaded.
+## Local Development
+
+Requirements: Node.js 24 (same major version used by the deployment workflow).
+
+```sh
+npm ci
+npm run dev
+```
+
+## Checks
+
+```sh
+npm run check
+npm run lint
+npm run build
+```
+
+GitHub Actions deploys the generated `dist/` directory to GitHub Pages when changes are pushed to `main`.

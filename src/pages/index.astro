@@ -8,14 +8,12 @@ import { metrics } from "../data/portfolio";
     <section class="hero-section mx-auto max-w-6xl px-6" aria-labelledby="hero-heading">
       <div class="hero-grid-pattern" aria-hidden="true"></div>
       <div class="hero-copy">
-        <p class="eyebrow"><span class="status-dot"></span> C++ Software Architect</p>
-        <h1 id="hero-heading">I build <span class="gradient-text">C++ software</span> that teams can trust.</h1>
-        <p class="hero-lede">I design systems, improve the way teams build software, and enjoy making difficult code easier to understand.</p>
+        <p class="eyebrow"><span class="status-dot"></span> Software architect · hands-on engineer</p>
+        <h1 id="hero-heading">I help teams make <span class="gradient-text">complex software</span> easier to change.</h1>
+        <p class="hero-lede">My work is mostly C++ systems and automotive perception software. I like staying close to the code, making decisions understandable, and learning from the people around me.</p>
         <div class="mt-9 flex flex-wrap items-center gap-4">
           <a href="/experience" class="btn-primary">Experience <span aria-hidden="true">↓</span></a>
-          <a href="/projects" class="btn-secondary">Projects <span aria-hidden="true">→</span></a>
-          <a href="/architecture" class="btn-secondary">Architecture <span aria-hidden="true">→</span></a>
-          <a href="/credentials" class="btn-secondary">Credentials <span aria-hidden="true">→</span></a>
+          <a href="/projects" class="btn-secondary">Selected work <span aria-hidden="true">→</span></a>
         </div>
         <div class="hero-meta"><span class="meta-divider"></span><span>M.Sc. Mathematics · Querétaro, Mexico</span><span class="meta-divider"></span></div>
       </div>
@@ -23,34 +21,34 @@ import { metrics } from "../data/portfolio";
         <div class="hero-visual__frame">
           <img src="/chibi_modern_profile_pic.png" alt="Illustrated portrait of Calileus programming with a Charmander companion" />
           <div class="hero-visual__scanline" aria-hidden="true"></div>
-          <div class="hero-visual__label hero-visual__label--top">ARCHITECTING STABLE FUTURE</div>
-          <div class="hero-visual__label hero-visual__label--bottom"><span class="status-dot"></span>CALILEUS LAB</div>
+          <div class="hero-visual__label hero-visual__label--top">C++ · AUTOMOTIVE SOFTWARE</div>
+          <div class="hero-visual__label hero-visual__label--bottom"><span class="status-dot"></span>MÉXICO</div>
         </div>
-        <div class="hero-visual__caption"><span>Personal identity:</span><strong>Code · Honor · Legacy</strong></div>
+        <div class="hero-visual__caption"><span>Building software with teams</span><strong>Learn · Build · Improve</strong></div>
       </aside>
     </section>
 
     <section class="section-band mx-auto max-w-6xl px-6" aria-labelledby="impact-heading">
-      <div class="section-intro"><p class="eyebrow">01 / AT A GLANCE</p><h2 id="impact-heading">A few useful numbers.</h2><p>Results from recent work.</p></div>
+      <div class="section-intro"><p class="eyebrow">01 / AT A GLANCE</p><h2 id="impact-heading">A little context.</h2><p>Milestones from work I have been part of.</p></div>
       <div class="impact-grid">
         {metrics.map((metric, index) => <div class:list={["impact-item", { "impact-item--featured": index === 0 }]}><strong>{metric.value}</strong><span>{metric.description}</span></div>)}
       </div>
     </section>
 
     <section class="section-band mx-auto max-w-6xl px-6" aria-labelledby="nav-heading">
-      <div class="section-intro"><p class="eyebrow">02 / EXPLORE</p><h2 id="nav-heading">Jump to a section.</h2></div>
+      <div class="section-intro"><p class="eyebrow">02 / EXPLORE</p><h2 id="nav-heading">More about my work.</h2></div>
       <nav class="nav-grid" aria-label="Main navigation">
         <a href="/experience" class="nav-card">
           <h3>Experience</h3>
-          <p>14-person team, automotive radar, CI/CD, mentoring</p>
+          <p>Automotive software, teaching, and private prototypes</p>
         </a>
         <a href="/projects" class="nav-card">
           <h3>Projects</h3>
-          <p>Open-source C++ engines, templates, tools</p>
+          <p>Upstream contributions and collaborative projects</p>
         </a>
         <a href="/architecture" class="nav-card">
           <h3>Architecture</h3>
-          <p>Design principles, patterns, and decision records</p>
+          <p>How I make technical decisions and work with teams</p>
         </a>
         <a href="/credentials" class="nav-card">
           <h3>Credentials</h3>
@@ -60,7 +58,7 @@ import { metrics } from "../data/portfolio";
     </section>
 
     <section class="closing-section mx-auto max-w-6xl px-6" aria-labelledby="contact-heading">
-      <div class="closing-panel"><p class="eyebrow">03 / CONNECT</p><h2 id="contact-heading">Let's talk software.</h2><div class="mt-6 flex flex-wrap gap-4"><a href="https://www.linkedin.com/in/calileus" target="_blank" rel="noopener noreferrer" class="btn-primary">LinkedIn <span aria-hidden="true">↗</span></a><a href="https://github.com/Calileus" target="_blank" rel="noopener noreferrer" class="btn-secondary">GitHub <span aria-hidden="true">↗</span></a></div></div>
+      <div class="closing-panel"><p class="eyebrow">03 / CONNECT</p><h2 id="contact-heading">Have a problem worth working through?</h2><p>I’m always glad to hear about thoughtful software teams and difficult engineering problems.</p><div class="mt-6 flex flex-wrap gap-4"><a href="https://www.linkedin.com/in/calileus" target="_blank" rel="noopener noreferrer" class="btn-primary">Contact on LinkedIn <span aria-hidden="true">↗</span></a><a href="https://github.com/Calileus" target="_blank" rel="noopener noreferrer" class="btn-secondary">GitHub <span aria-hidden="true">↗</span></a></div></div>
     </section>
   </main>
 </Layout>

@@ -42,7 +42,7 @@
     
     <!-- Subtitle -->
     <text x="600" y="310" text-anchor="middle" font-size="24" font-weight="500" fill="#6ee7b7" letter-spacing="0.05em" style="text-transform: uppercase;">
-      Software Architect &amp; Lead Developer
+      Software architect · hands-on engineer
     </text>
     
     <!-- Divider -->
@@ -51,7 +51,7 @@
     <!-- Tags -->
     <g font-family="JetBrains Mono, monospace" font-size="16" fill="#a7f3d0">
       <text x="600" y="390" text-anchor="middle" fill="#34d399">
-        Modern C++  ·  Distributed Systems  ·  CI/CD  ·  Software Quality
+        C++  ·  Automotive perception ·  CI/CD  ·  Software Quality  ·  Open source
       </text>
     </g>
     
